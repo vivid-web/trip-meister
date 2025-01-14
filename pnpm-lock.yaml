@@ -24,6 +24,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.3.4(vite@6.0.7)
+      prettier:
+        specifier: ^3.4.2
+        version: 3.4.2
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -489,6 +492,11 @@ packages:
   postcss@8.5.0:
     resolution: {integrity: sha512-27VKOqrYfPncKA2NrFOVhP5MGAfHKLYn/Q0mz9cNQyRAKYi3VNHwYU2qKKqPCqgBmeeJ0uAFB56NumXZ5ZReXg==}
     engines: {node: ^10 || ^12 || >=14}
+
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   react-dom@19.0.0:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==}
@@ -960,6 +968,8 @@ snapshots:
       nanoid: 3.3.8
       picocolors: 1.1.1
       source-map-js: 1.2.1
+
+  prettier@3.4.2: {}
 
   react-dom@19.0.0(react@19.0.0):
     dependencies:
