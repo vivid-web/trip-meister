@@ -1,9 +1,15 @@
-import { CalendarIcon, CheckCircleIcon, Edit2Icon } from "lucide-react";
+import {
+	CalendarIcon,
+	CheckCircleIcon,
+	Edit2Icon,
+	Trash2Icon,
+} from "lucide-react";
 import { formatDate } from "@/lib/utils";
 import { EditTripDialog } from "@/components/edit-trip-dialog";
 import { FinishTripDialog } from "@/components/finish-trip-dialog";
 import { Trip } from "@/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DeleteTripDialog } from "@/components/delete-trip-dialog";
 
 type Props = Trip;
 
@@ -29,6 +35,12 @@ export function TripCard(props: Props) {
 							Edit
 						</button>
 					</EditTripDialog>
+					<DeleteTripDialog {...props}>
+						<button className="flex items-center rounded-full bg-red-100 px-3 py-1 text-red-800 transition-colors hover:cursor-pointer hover:bg-red-200">
+							<Trash2Icon className="mr-1 h-4 w-4" />
+							Delete
+						</button>
+					</DeleteTripDialog>
 				</div>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-1">
