@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -40,6 +40,8 @@ export function EditTripDialog({
 	endMileage,
 	endDate,
 }: Props) {
+	const [isOpen, setIsOpen] = useState(false);
+
 	const form = useZodForm({
 		schema: EditTripSchema,
 		defaultValues: {
@@ -53,10 +55,12 @@ export function EditTripDialog({
 
 	const onSubmit = form.handleSubmit(async (data) => {
 		await db.trips.update(id, data);
+
+		setIsOpen(false);
 	});
 
 	return (
-		<Dialog>
+		<Dialog onOpenChange={setIsOpen} open={isOpen}>
 			<DialogTrigger asChild>{children}</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
