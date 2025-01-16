@@ -11,12 +11,15 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 
 type Props = PropsWithChildren<Trip>;
 
 export function DeleteTripDialog({ children, id }: Props) {
 	const onDelete = async () => {
 		await db.trips.delete(id);
+
+		toast.success("Trip has been deleted");
 	};
 
 	return (

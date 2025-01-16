@@ -13,6 +13,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { db } from "@/db.ts";
+import { toast } from "sonner";
 
 const NewTripSchema = z.object({
 	name: z.string().min(1),
@@ -32,6 +33,8 @@ export function NewTripCard() {
 			...data,
 			startDate: new Date(),
 		});
+
+		toast.success("Trip has been started");
 	});
 
 	return (

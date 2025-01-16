@@ -19,6 +19,7 @@ import {
 import { DateInput, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { db } from "@/db.ts";
+import { toast } from "sonner";
 
 const FinishTripSchema = z.object({
 	endDate: z.coerce.date(),
@@ -37,6 +38,8 @@ export function FinishTripDialog({ children, id }: Props) {
 
 	const onSubmit = form.handleSubmit(async (data) => {
 		await db.trips.update(id, data);
+
+		toast.success("Trip has been saved");
 	});
 
 	return (

@@ -20,6 +20,7 @@ import {
 import { DateInput, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { db, Trip } from "@/db";
+import { toast } from "sonner";
 
 const EditTripSchema = z.object({
 	startDate: z.coerce.date(),
@@ -57,6 +58,8 @@ export function EditTripDialog({
 		await db.trips.update(id, data);
 
 		setIsOpen(false);
+
+		toast.success("Trip has been saved");
 	});
 
 	return (
