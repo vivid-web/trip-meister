@@ -15,12 +15,6 @@ export function TripCard(props: Props) {
 			<CardHeader className="flex flex-row content-center items-center">
 				<CardTitle className="flex flex-1">{name}</CardTitle>
 				<div className="flex flex-row gap-1">
-					<EditTripDialog {...props}>
-						<button className="flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 transition-colors hover:cursor-pointer hover:bg-gray-200">
-							<Edit2Icon className="mr-1 h-4 w-4" />
-							Edit
-						</button>
-					</EditTripDialog>
 					{!endDate && (
 						<FinishTripDialog {...props}>
 							<button className="flex items-center rounded-full bg-green-100 px-3 py-1 text-green-800 transition-colors hover:cursor-pointer hover:bg-green-200">
@@ -29,6 +23,12 @@ export function TripCard(props: Props) {
 							</button>
 						</FinishTripDialog>
 					)}
+					<EditTripDialog {...props}>
+						<button className="flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 transition-colors hover:cursor-pointer hover:bg-gray-200">
+							<Edit2Icon className="mr-1 h-4 w-4" />
+							Edit
+						</button>
+					</EditTripDialog>
 				</div>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-1">
