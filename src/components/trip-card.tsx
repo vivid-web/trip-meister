@@ -32,10 +32,10 @@ export function TripCard(props: Props) {
 				<div className="flex flex-row gap-2">
 					{!endDate && (
 						<FinishTripDialog {...props}>
-							<button className="flex items-center rounded-md bg-green-100 px-3 py-1 text-green-800 transition-colors hover:cursor-pointer hover:bg-green-200">
-								<CheckCircleIcon className="mr-1 h-4 w-4" />
+							<Button>
+								<CheckCircleIcon className="h-4 w-4" />
 								Finish
-							</button>
+							</Button>
 						</FinishTripDialog>
 					)}
 					<DropdownMenu>
