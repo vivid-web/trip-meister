@@ -2,6 +2,7 @@ import {
 	CalendarIcon,
 	CheckCircleIcon,
 	Edit2Icon,
+	EllipsisVerticalIcon,
 	Trash2Icon,
 } from "lucide-react";
 import { formatDate } from "@/lib/utils";
@@ -10,6 +11,14 @@ import { FinishTripDialog } from "@/components/finish-trip-dialog";
 import { Trip } from "@/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DeleteTripDialog } from "@/components/delete-trip-dialog";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 type Props = Trip;
 
@@ -20,27 +29,47 @@ export function TripCard(props: Props) {
 		<Card className="border-l-4 border-l-primary">
 			<CardHeader className="flex flex-row content-center items-center">
 				<CardTitle className="flex flex-1">{name}</CardTitle>
-				<div className="flex flex-row gap-1">
+				<div className="flex flex-row gap-2">
 					{!endDate && (
 						<FinishTripDialog {...props}>
-							<button className="flex items-center rounded-full bg-green-100 px-3 py-1 text-green-800 transition-colors hover:cursor-pointer hover:bg-green-200">
+							<button className="flex items-center rounded-md bg-green-100 px-3 py-1 text-green-800 transition-colors hover:cursor-pointer hover:bg-green-200">
 								<CheckCircleIcon className="mr-1 h-4 w-4" />
 								Finish
 							</button>
 						</FinishTripDialog>
 					)}
-					<EditTripDialog {...props}>
-						<button className="flex items-center rounded-full bg-gray-100 px-3 py-1 text-gray-800 transition-colors hover:cursor-pointer hover:bg-gray-200">
-							<Edit2Icon className="mr-1 h-4 w-4" />
-							Edit
-						</button>
-					</EditTripDialog>
-					<DeleteTripDialog {...props}>
-						<button className="flex items-center rounded-full bg-red-100 px-3 py-1 text-red-800 transition-colors hover:cursor-pointer hover:bg-red-200">
-							<Trash2Icon className="mr-1 h-4 w-4" />
-							Delete
-						</button>
-					</DeleteTripDialog>
+					<DropdownMenu>
+						<DropdownMenuTrigger asChild>
+							<Button aria-haspopup="true" size="icon" variant="ghost">
+								<EllipsisVerticalIcon className="h-4 w-4" />
+								<span className="sr-only">Toggle menu</span>
+							</Button>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="end">
+							<DropdownMenuGroup>
+								<EditTripDialog {...props}>
+									<DropdownMenuItem
+										onSelect={(e) => {
+											e.preventDefault();
+										}}
+									>
+										<Edit2Icon className="h-4 w-4" />
+										<span>Edit</span>
+									</DropdownMenuItem>
+								</EditTripDialog>
+								<DeleteTripDialog {...props}>
+									<DropdownMenuItem
+										onSelect={(e) => {
+											e.preventDefault();
+										}}
+									>
+										<Trash2Icon className="h-4 w-4" />
+										<span>Delete</span>
+									</DropdownMenuItem>
+								</DeleteTripDialog>
+							</DropdownMenuGroup>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</div>
 			</CardHeader>
 			<CardContent className="flex flex-col gap-1">
