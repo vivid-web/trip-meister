@@ -32,9 +32,8 @@ export function TripCard(props: Props) {
 				<div className="flex flex-row gap-2">
 					{!endDate && (
 						<FinishTripDialog {...props}>
-							<Button>
+							<Button size="icon">
 								<CheckCircleIcon className="h-4 w-4" />
-								Finish
 							</Button>
 						</FinishTripDialog>
 					)}
