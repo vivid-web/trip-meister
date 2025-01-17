@@ -5,7 +5,7 @@ import {
 	EllipsisVerticalIcon,
 	Trash2Icon,
 } from "lucide-react";
-import { formatDate } from "@/lib/utils";
+import { formatDate, formatDistance } from "@/lib/utils";
 import { EditTripDialog } from "@/components/edit-trip-dialog";
 import { FinishTripDialog } from "@/components/finish-trip-dialog";
 import { Trip } from "@/db";
@@ -19,11 +19,13 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useAtom } from "jotai";
+import { distanceUnitsAtom } from "@/atoms.ts";
 
-type Props = Trip;
-
-export function TripCard(props: Props) {
+export function TripCard(props: Trip) {
 	const { name, startDate, endDate, startMileage, endMileage } = props;
+
+	const [distanceUnits] = useAtom(distanceUnitsAtom);
 
 	return (
 		<Card className="border-l-4 border-l-primary">
@@ -84,11 +86,11 @@ export function TripCard(props: Props) {
 				</div>
 				{(startMileage || endMileage) && (
 					<p className="text-sm text-gray-600">
-						Mileage: {startMileage} km
-						{endMileage && ` → ${endMileage} km`}
+						Mileage: {formatDistance(startMileage, distanceUnits!)}
+						{endMileage && ` → ${formatDistance(endMileage, distanceUnits!)}`}
 						{startMileage && endMileage && (
 							<span className="ml-2 text-primary">
-								({endMileage - startMileage} km)
+								({formatDistance(endMileage - startMileage, distanceUnits!)})
 							</span>
 						)}
 					</p>
