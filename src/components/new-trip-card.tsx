@@ -1,9 +1,9 @@
-import { PlusCircle, Settings2Icon } from "lucide-react";
+import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
-import { useZodForm } from "@/lib/utils";
+import { handleDownload, useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -12,9 +12,10 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { db } from "@/db.ts";
+import { db } from "@/db";
 import { toast } from "sonner";
 import { AdjustSettingsDialog } from "@/components/adjust-settings-dialog";
+import { exportDB } from "dexie-export-import";
 
 const NewTripSchema = z.object({
 	name: z.string().min(1),
@@ -38,15 +39,26 @@ export function NewTripCard() {
 		toast.success("Trip has been started");
 	});
 
+	const onDownload = async () => {
+		const blob = await exportDB(db);
+
+		handleDownload("trip-meister-export.json", blob);
+	};
+
 	return (
 		<Card>
 			<CardHeader className="flex flex-row content-center items-center">
 				<CardTitle className="flex flex-1">Start New Trip</CardTitle>
-				<AdjustSettingsDialog>
-					<Button size="icon">
-						<Settings2Icon className="h-4 w-4" />
+				<div className="flex gap-2">
+					<AdjustSettingsDialog>
+						<Button size="icon">
+							<Settings2Icon className="h-4 w-4" />
+						</Button>
+					</AdjustSettingsDialog>
+					<Button size="icon" onClick={onDownload}>
+						<SaveIcon className="h-4 w-4" />
 					</Button>
-				</AdjustSettingsDialog>
+				</div>
 			</CardHeader>
 			<CardContent>
 				<Form {...form}>
