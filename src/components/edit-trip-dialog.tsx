@@ -8,7 +8,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { z } from "zod";
-import { useZodForm } from "@/lib/utils";
+import { formatDate, formatDistance, useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -21,16 +21,35 @@ import { DateInput, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { db, Trip } from "@/db";
 import { toast } from "sonner";
-
-const EditTripSchema = z.object({
-	startDate: z.coerce.date(),
-	name: z.string().min(1),
-	startMileage: z.coerce.number().min(1),
-	endDate: z.coerce.date().optional(),
-	endMileage: z.coerce.number().optional(),
-});
+import { useAtom } from "jotai/index";
+import { distanceUnitsAtom } from "@/atoms";
 
 type Props = PropsWithChildren<Trip>;
+
+const NameSchema = z
+	.string({ message: "The trip name is required" })
+	.min(5, "The trip name must be longer than 5 character")
+	.max(255, "The trip name must be shorter than 255 characters");
+
+const StartDateSchema = z.coerce.date({
+	message: "The start date must be a valid date",
+	required_error: "The start date is required",
+	invalid_type_error: "The start date must be a valid date",
+});
+
+const EndDateSchema = z.coerce.date({
+	message: "The end date must be a valid date",
+	required_error: "The end date is required",
+	invalid_type_error: "The end date must be a valid date",
+});
+
+const StartMileageSchema = z.coerce
+	.number({ message: "The start mileage is required" })
+	.min(0, "The start mileage must be greater than 0");
+
+const EndMileageSchema = z.coerce
+	.number({ message: "The end mileage is required" })
+	.min(0, "The end mileage must be greater than 0");
 
 export function EditTripDialog({
 	children,
@@ -41,10 +60,25 @@ export function EditTripDialog({
 	endMileage,
 	endDate,
 }: Props) {
+	const [distanceUnits] = useAtom(distanceUnitsAtom);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const schema = z.object({
+		name: NameSchema,
+		startDate: StartDateSchema,
+		endDate: EndDateSchema.min(
+			startDate,
+			`The end date must be after ${formatDate(startDate)}`,
+		),
+		startMileage: StartMileageSchema,
+		endMileage: EndMileageSchema.min(
+			startMileage,
+			`The end mileage must equal be greater than ${formatDistance(startMileage, distanceUnits)}`,
+		),
+	});
+
 	const form = useZodForm({
-		schema: EditTripSchema,
+		schema,
 		defaultValues: {
 			name,
 			startDate,
@@ -117,10 +151,11 @@ export function EditTripDialog({
 									<FormLabel>Start Mileage</FormLabel>
 									<FormControl>
 										<Input
-											type="number"
-											step="0.1"
-											placeholder="Enter end mileage"
 											{...field}
+											placeholder="Enter end mileage"
+											step="0.1"
+											type="number"
+											value={field.value ?? ""}
 										/>
 									</FormControl>
 									<FormMessage />
@@ -153,10 +188,11 @@ export function EditTripDialog({
 									<FormLabel>End Mileage</FormLabel>
 									<FormControl>
 										<Input
-											type="number"
-											step="0.1"
-											placeholder="Enter end mileage"
 											{...field}
+											placeholder="Enter end mileage"
+											step="0.1"
+											type="number"
+											value={field.value ?? ""}
 										/>
 									</FormControl>
 									<FormMessage />
