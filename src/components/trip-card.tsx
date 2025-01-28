@@ -6,11 +6,8 @@ import {
 	Trash2Icon,
 } from "lucide-react";
 import { formatDate, formatDistance } from "@/lib/utils";
-import { EditTripDialog } from "@/components/edit-trip-dialog";
-import { FinishTripDialog } from "@/components/finish-trip-dialog";
 import { Trip } from "@/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DeleteTripDialog } from "@/components/delete-trip-dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -21,6 +18,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAtom } from "jotai";
 import { distanceUnitsAtom } from "@/atoms.ts";
+import { lazily } from "react-lazily";
+
+const { EditTripDialog } = lazily(
+	() => import("@/components/edit-trip-dialog"),
+);
+
+const { FinishTripDialog } = lazily(
+	() => import("@/components/finish-trip-dialog"),
+);
+
+const { DeleteTripDialog } = lazily(
+	() => import("@/components/delete-trip-dialog"),
+);
 
 export function TripCard(props: Trip) {
 	const { name, startDate, endDate, startMileage, endMileage } = props;
