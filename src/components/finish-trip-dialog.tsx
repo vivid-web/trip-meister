@@ -22,16 +22,7 @@ import { db, Trip } from "@/db";
 import { toast } from "sonner";
 import { useAtom } from "jotai/index";
 import { distanceUnitsAtom } from "@/atoms";
-
-const EndDateSchema = z.coerce.date({
-	message: "The end date must be a valid date",
-	required_error: "The end date is required",
-	invalid_type_error: "The end date must be a valid date",
-});
-
-const EndMileageSchema = z.coerce
-	.number({ message: "The end mileage is required" })
-	.min(0, "The end mileage must be greater than 0");
+import { EndDateSchema, EndMileageSchema } from "@/lib/schemas";
 
 export function FinishTripDialog({
 	children,
