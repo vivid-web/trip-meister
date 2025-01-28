@@ -7,7 +7,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { z } from "zod";
-import { useZodForm } from "@/lib/utils";
+import { formatDate, formatDistance, useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -18,19 +18,44 @@ import {
 } from "@/components/ui/form";
 import { DateInput, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db.ts";
+import { db, Trip } from "@/db";
 import { toast } from "sonner";
+import { useAtom } from "jotai/index";
+import { distanceUnitsAtom } from "@/atoms";
 
-const FinishTripSchema = z.object({
-	endDate: z.coerce.date(),
-	endMileage: z.coerce.number().min(0),
+type Props = PropsWithChildren<Trip>;
+
+const EndDateSchema = z.coerce.date({
+	message: "The end date must be a valid date",
+	required_error: "The end date is required",
+	invalid_type_error: "The end date must be a valid date",
 });
 
-type Props = PropsWithChildren<{ id: number }>;
+const EndMileageSchema = z.coerce
+	.number({ message: "The end mileage is required" })
+	.min(0, "The end mileage must be greater than 0");
 
-export function FinishTripDialog({ children, id }: Props) {
+export function FinishTripDialog({
+	children,
+	id,
+	startMileage,
+	startDate,
+}: Props) {
+	const [distanceUnits] = useAtom(distanceUnitsAtom);
+
+	const schema = z.object({
+		endDate: EndDateSchema.min(
+			startDate,
+			`The end date must be after ${formatDate(startDate)}`,
+		),
+		endMileage: EndMileageSchema.min(
+			startMileage,
+			`The end mileage must equal be greater than ${formatDistance(startMileage, distanceUnits)}`,
+		),
+	});
+
 	const form = useZodForm({
-		schema: FinishTripSchema,
+		schema,
 		defaultValues: {
 			endDate: new Date(),
 		},
@@ -74,13 +99,14 @@ export function FinishTripDialog({ children, id }: Props) {
 							name="endMileage"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>End Date and Time</FormLabel>
+									<FormLabel>End Mileage</FormLabel>
 									<FormControl>
 										<Input
-											type="number"
-											step="0.1"
-											placeholder="Enter end mileage"
 											{...field}
+											placeholder="Enter end mileage"
+											step="0.1"
+											type="number"
+											value={field.value ?? ""}
 										/>
 									</FormControl>
 									<FormMessage />
