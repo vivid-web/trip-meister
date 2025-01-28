@@ -20,14 +20,17 @@ export const useSafeContext = <T>(context: Context<T | undefined>) => {
 	return value;
 };
 
-export function useZodForm<TSchema extends z.ZodType>(
-	props: {
-		schema: TSchema;
-	} & Omit<UseFormProps<TSchema["_input"]>, "resolver">,
-) {
+type UseZodFormParams<TSchema extends z.ZodType> = {
+	schema: TSchema;
+} & Omit<UseFormProps<TSchema["_input"]>, "resolver">;
+
+export function useZodForm<TSchema extends z.ZodType>({
+	schema,
+	...params
+}: UseZodFormParams<TSchema>) {
 	return useForm<TSchema["_input"]>({
-		...props,
-		resolver: zodResolver(props.schema, undefined),
+		...params,
+		resolver: zodResolver(schema),
 	});
 }
 
