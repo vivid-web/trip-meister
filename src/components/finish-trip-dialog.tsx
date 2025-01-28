@@ -62,6 +62,8 @@ export function FinishTripDialog({
 	const onSubmit = form.handleSubmit(async (data) => {
 		await db.trips.update(id, data);
 
+		form.reset();
+
 		toast.success("Trip has been saved");
 	});
 
