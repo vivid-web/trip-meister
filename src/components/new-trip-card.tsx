@@ -15,9 +15,13 @@ import {
 } from "@/components/ui/form";
 import { db } from "@/db";
 import { toast } from "sonner";
-import { AdjustSettingsDialog } from "@/components/adjust-settings-dialog";
 import { exportDB } from "dexie-export-import";
 import { NameSchema, StartMileageSchema } from "@/lib/schemas";
+import { lazily } from "react-lazily";
+
+const { AdjustSettingsDialog } = lazily(
+	() => import("@/components/adjust-settings-dialog"),
+);
 
 export function NewTripCard() {
 	const form = useZodForm({
