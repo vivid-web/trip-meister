@@ -23,8 +23,6 @@ import { toast } from "sonner";
 import { useAtom } from "jotai/index";
 import { distanceUnitsAtom } from "@/atoms";
 
-type Props = PropsWithChildren<Trip>;
-
 const EndDateSchema = z.coerce.date({
 	message: "The end date must be a valid date",
 	required_error: "The end date is required",
@@ -40,7 +38,7 @@ export function FinishTripDialog({
 	id,
 	startMileage,
 	startDate,
-}: Props) {
+}: PropsWithChildren<Trip>) {
 	const [distanceUnits] = useAtom(distanceUnitsAtom);
 
 	const schema = z.object({
