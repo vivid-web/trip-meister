@@ -42,6 +42,9 @@ export function NewTripCard() {
 			startDate: new Date(),
 		});
 
+		form.setFocus("name");
+		form.reset();
+
 		toast.success("Trip has been started");
 	});
 
