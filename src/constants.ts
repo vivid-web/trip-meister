@@ -10,4 +10,4 @@ export type Miles = typeof MILES;
 
 export type KiloMeters = typeof KILOMETERS;
 
-export type DistanceUnit = Miles | KiloMeters;
+export type DistanceUnit = KiloMeters | Miles;

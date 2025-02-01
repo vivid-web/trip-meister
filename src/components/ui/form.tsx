@@ -1,4 +1,7 @@
+import { Label } from "@/components/ui/label";
+import { cn, useSafeContext } from "@/lib/utils";
 import { Slot } from "@radix-ui/react-slot";
+import { ComponentProps, createContext, useId } from "react";
 import {
 	Controller,
 	ControllerProps,
@@ -7,10 +10,6 @@ import {
 	FormProvider,
 	useFormContext,
 } from "react-hook-form";
-
-import { cn, useSafeContext } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
-import { ComponentProps, createContext, useId } from "react";
 
 const Form = FormProvider;
 
@@ -39,18 +38,18 @@ function FormField<
 const useFormField = () => {
 	const fieldContext = useSafeContext(FormFieldContext);
 	const itemContext = useSafeContext(FormItemContext);
-	const { getFieldState, formState } = useFormContext();
+	const { formState, getFieldState } = useFormContext();
 
 	const fieldState = getFieldState(fieldContext.name, formState);
 
 	const { id } = itemContext;
 
 	return {
+		formDescriptionId: `${id}-form-item-description`,
+		formItemId: `${id}-form-item`,
+		formMessageId: `${id}-form-item-message`,
 		id,
 		name: fieldContext.name,
-		formItemId: `${id}-form-item`,
-		formDescriptionId: `${id}-form-item-description`,
-		formMessageId: `${id}-form-item-message`,
 		...fieldState,
 	};
 };
@@ -86,18 +85,16 @@ function FormLabel({ className, ...props }: ComponentProps<typeof Label>) {
 }
 
 function FormControl(props: ComponentProps<typeof Slot>) {
-	const { error, formItemId, formDescriptionId, formMessageId } =
+	const { error, formDescriptionId, formItemId, formMessageId } =
 		useFormField();
 
 	return (
 		<Slot
-			id={formItemId}
 			aria-describedby={
-				!error
-					? `${formDescriptionId}`
-					: `${formDescriptionId} ${formMessageId}`
+				!error ? formDescriptionId : `${formDescriptionId} ${formMessageId}`
 			}
 			aria-invalid={!!error}
+			id={formItemId}
 			{...props}
 		/>
 	);
@@ -108,8 +105,8 @@ function FormDescription({ className, ...props }: ComponentProps<"p">) {
 
 	return (
 		<p
-			id={formDescriptionId}
 			className={cn("text-sm text-muted-foreground", className)}
+			id={formDescriptionId}
 			{...props}
 		/>
 	);
@@ -117,7 +114,7 @@ function FormDescription({ className, ...props }: ComponentProps<"p">) {
 
 function FormMessage({ children, className, ...props }: ComponentProps<"p">) {
 	const { error, formMessageId } = useFormField();
-	const body = error ? String(error?.message) : children;
+	const body = error ? String(error.message) : children;
 
 	if (!body) {
 		return null;
@@ -125,8 +122,8 @@ function FormMessage({ children, className, ...props }: ComponentProps<"p">) {
 
 	return (
 		<p
-			id={formMessageId}
 			className={cn("text-sm font-medium text-destructive", className)}
+			id={formMessageId}
 			{...props}
 		>
 			{body}
@@ -135,12 +132,12 @@ function FormMessage({ children, className, ...props }: ComponentProps<"p">) {
 }
 
 export {
-	useFormField,
 	Form,
-	FormItem,
-	FormLabel,
 	FormControl,
 	FormDescription,
-	FormMessage,
 	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+	useFormField,
 };

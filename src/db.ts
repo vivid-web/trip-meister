@@ -1,12 +1,12 @@
-import Dexie, { EntityTable } from "dexie";
+import { Dexie, EntityTable } from "dexie";
 
 export type Trip = {
+	endDate?: Date;
+	endMileage?: number;
 	id: number;
 	name: string;
 	startDate: Date;
 	startMileage: number;
-	endDate?: Date;
-	endMileage?: number;
 };
 
 export const db = new Dexie("TripMeister") as Dexie & {
