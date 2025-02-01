@@ -1,7 +1,6 @@
+import { cn } from "@/lib/utils";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown, ChevronUp } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { ComponentProps } from "react";
 
 const Select = SelectPrimitive.Root;
@@ -11,8 +10,8 @@ const SelectGroup = SelectPrimitive.Group;
 const SelectValue = SelectPrimitive.Value;
 
 function SelectTrigger({
-	className,
 	children,
+	className,
 	...props
 }: ComponentProps<typeof SelectPrimitive.Trigger>) {
 	return (
@@ -66,8 +65,8 @@ function SelectScrollDownButton({
 }
 
 function SelectContent({
-	className,
 	children,
+	className,
 	position = "popper",
 	...props
 }: ComponentProps<typeof SelectPrimitive.Content>) {
@@ -112,8 +111,8 @@ function SelectLabel({
 }
 
 function SelectItem({
-	className,
 	children,
+	className,
 	...props
 }: ComponentProps<typeof SelectPrimitive.Item>) {
 	return (
@@ -148,13 +147,13 @@ function SelectSeparator({
 
 export {
 	Select,
-	SelectGroup,
-	SelectValue,
-	SelectTrigger,
 	SelectContent,
-	SelectLabel,
+	SelectGroup,
 	SelectItem,
-	SelectSeparator,
-	SelectScrollUpButton,
+	SelectLabel,
 	SelectScrollDownButton,
+	SelectScrollUpButton,
+	SelectSeparator,
+	SelectTrigger,
+	SelectValue,
 };

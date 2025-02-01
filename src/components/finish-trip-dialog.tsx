@@ -1,4 +1,5 @@
-import { PropsWithChildren } from "react";
+import { distanceUnitsAtom } from "@/atoms";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -6,8 +7,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { z } from "zod";
-import { formatDate, formatDistance, useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -17,18 +16,19 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { DateInput, Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { db, Trip } from "@/db";
-import { toast } from "sonner";
-import { useAtom } from "jotai/index";
-import { distanceUnitsAtom } from "@/atoms";
 import { EndDateSchema, EndMileageSchema } from "@/lib/schemas";
+import { formatDate, formatDistance, useZodForm } from "@/lib/utils";
+import { useAtom } from "jotai/index";
+import { PropsWithChildren } from "react";
+import { toast } from "sonner";
+import { z } from "zod";
 
 export function FinishTripDialog({
 	children,
 	id,
-	startMileage,
 	startDate,
+	startMileage,
 }: PropsWithChildren<Trip>) {
 	const [distanceUnits] = useAtom(distanceUnitsAtom);
 
@@ -44,10 +44,10 @@ export function FinishTripDialog({
 	});
 
 	const form = useZodForm({
-		schema,
 		defaultValues: {
 			endDate: new Date(),
 		},
+		schema,
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
@@ -66,7 +66,12 @@ export function FinishTripDialog({
 					<DialogTitle>Finish Trip</DialogTitle>
 				</DialogHeader>
 				<Form {...form}>
-					<form className="flex flex-col gap-4" onSubmit={onSubmit}>
+					<form
+						className="flex flex-col gap-4"
+						onSubmit={(e) => {
+							void onSubmit(e);
+						}}
+					>
 						<FormField
 							control={form.control}
 							name="endDate"
@@ -75,10 +80,10 @@ export function FinishTripDialog({
 									<FormLabel>End Date and Time</FormLabel>
 									<FormControl>
 										<DateInput
-											selected={field.value}
-											onChange={field.onChange}
-											showTimeInput
 											dateFormat="MM/dd/yyyy h:mm aa"
+											onChange={field.onChange}
+											selected={field.value}
+											showTimeInput
 										/>
 									</FormControl>
 									<FormMessage />
@@ -97,7 +102,7 @@ export function FinishTripDialog({
 											placeholder="Enter end mileage"
 											step="0.1"
 											type="number"
-											value={field.value ?? ""}
+											value={field.value || ""}
 										/>
 									</FormControl>
 									<FormMessage />

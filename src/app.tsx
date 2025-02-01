@@ -1,7 +1,7 @@
-import { CarIcon } from "lucide-react";
 import { NewTripCard } from "@/components/new-trip-card";
 import { TripList } from "@/components/trip-list";
 import { Toaster } from "@/components/ui/sonner";
+import { CarIcon } from "lucide-react";
 
 export function App() {
 	return (

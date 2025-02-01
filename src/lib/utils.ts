@@ -1,12 +1,12 @@
+import { DistanceUnit } from "@/constants.ts";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
 import { Context, useContext } from "react";
 import { useForm, UseFormProps } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { twMerge } from "tailwind-merge";
 import { z } from "zod";
-import { DistanceUnit } from "@/constants.ts";
 
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: Array<ClassValue>) {
 	return twMerge(clsx(inputs));
 }
 
@@ -20,9 +20,12 @@ export const useSafeContext = <T>(context: Context<T | undefined>) => {
 	return value;
 };
 
-type UseZodFormParams<TSchema extends z.ZodType> = {
+type UseZodFormParams<TSchema extends z.ZodType> = Omit<
+	UseFormProps<TSchema["_input"]>,
+	"resolver"
+> & {
 	schema: TSchema;
-} & Omit<UseFormProps<TSchema["_input"]>, "resolver">;
+};
 
 export function useZodForm<TSchema extends z.ZodType>({
 	schema,
@@ -36,11 +39,11 @@ export function useZodForm<TSchema extends z.ZodType>({
 
 export const formatDate = (date: Date) => {
 	return new Date(date).toLocaleDateString("en-US", {
-		year: "numeric",
-		month: "short",
 		day: "numeric",
 		hour: "2-digit",
 		minute: "2-digit",
+		month: "short",
+		year: "numeric",
 	});
 };
 

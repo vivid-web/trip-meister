@@ -1,6 +1,6 @@
 import { TripCard } from "@/components/trip-card";
-import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/db.ts";
+import { useLiveQuery } from "dexie-react-hooks";
 import { PropsWithChildren } from "react";
 
 function Layout({ children }: PropsWithChildren) {
