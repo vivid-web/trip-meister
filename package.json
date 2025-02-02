@@ -30,7 +30,7 @@
 		"dexie-export-import": "^4.1.4",
 		"dexie-react-hooks": "^1.1.7",
 		"jotai": "^2.11.3",
-		"lucide-react": "^0.474.0",
+		"lucide-react": "^0.469.0",
 		"react": "^19.0.0",
 		"react-datepicker": "^8.0.0",
 		"react-dom": "^19.0.0",
