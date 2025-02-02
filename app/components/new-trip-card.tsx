@@ -1,3 +1,4 @@
+import { DownloadStateButton } from "@/components/download-state-button";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -11,8 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { db } from "@/db";
 import { NameSchema, StartMileageSchema } from "@/lib/schemas";
-import { handleDownload, useZodForm } from "@/lib/utils";
-import { Loader2Icon, PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
+import { useZodForm } from "@/lib/utils";
+import { Loader2Icon, PlusCircle, Settings2Icon } from "lucide-react";
 import { Suspense, useEffect } from "react";
 import { lazily } from "react-lazily";
 import { toast } from "sonner";
@@ -45,17 +46,6 @@ export function NewTripCard() {
 		toast.success("Trip has been started");
 	});
 
-	const onDownload = async () => {
-		// Because `dexie-export-import` can only be used in the browser,
-		// we need to import it dynamically to avoid breaking the
-		// server-side rendering
-		const { exportDB } = await import("dexie-export-import");
-
-		const blob = await exportDB(db);
-
-		handleDownload("trip-meister-export.json", blob);
-	};
-
 	useEffect(() => {
 		form.setFocus("name");
 	}, [form, form.setFocus]);
@@ -78,14 +68,7 @@ export function NewTripCard() {
 							</Button>
 						</AdjustSettingsDialog>
 					</Suspense>
-					<Button
-						onClick={() => {
-							void onDownload();
-						}}
-						size="icon"
-					>
-						<SaveIcon className="h-4 w-4" />
-					</Button>
+					<DownloadStateButton />
 				</div>
 			</CardHeader>
 			<CardContent>
