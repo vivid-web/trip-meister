@@ -12,8 +12,8 @@ import { Input } from "@/components/ui/input";
 import { db } from "@/db";
 import { NameSchema, StartMileageSchema } from "@/lib/schemas";
 import { handleDownload, useZodForm } from "@/lib/utils";
-import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
-import { useEffect } from "react";
+import { Loader2Icon, PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
+import { Suspense, useEffect } from "react";
 import { lazily } from "react-lazily";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -65,11 +65,19 @@ export function NewTripCard() {
 			<CardHeader className="flex flex-row content-center items-center">
 				<CardTitle className="flex flex-1">Start New Trip</CardTitle>
 				<div className="flex gap-2">
-					<AdjustSettingsDialog>
-						<Button size="icon">
-							<Settings2Icon className="h-4 w-4" />
-						</Button>
-					</AdjustSettingsDialog>
+					<Suspense
+						fallback={
+							<Button disabled size="icon">
+								<Loader2Icon className="h-4 w-4 animate-spin" />
+							</Button>
+						}
+					>
+						<AdjustSettingsDialog>
+							<Button size="icon">
+								<Settings2Icon className="h-4 w-4" />
+							</Button>
+						</AdjustSettingsDialog>
+					</Suspense>
 					<Button
 						onClick={() => {
 							void onDownload();
