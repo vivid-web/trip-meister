@@ -1,4 +1,4 @@
-import { Dexie, EntityTable } from "dexie";
+import Dexie, { EntityTable } from "dexie";
 
 export type Trip = {
 	endDate?: Date;
