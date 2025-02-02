@@ -64,3 +64,5 @@ export const handleDownload = (fileName: string, blob: Blob) => {
 	elem.click();
 	document.body.removeChild(elem);
 };
+
+export const isServer = typeof window === "undefined";

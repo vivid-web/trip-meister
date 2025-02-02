@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { db } from "@/db";
 import { NameSchema, StartMileageSchema } from "@/lib/schemas";
 import { handleDownload, useZodForm } from "@/lib/utils";
-import { exportDB } from "dexie-export-import";
 import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
 import { useEffect } from "react";
 import { lazily } from "react-lazily";
@@ -47,6 +46,11 @@ export function NewTripCard() {
 	});
 
 	const onDownload = async () => {
+		// Because `dexie-export-import` can only be used in the browser,
+		// we need to import it dynamically to avoid breaking the
+		// server-side rendering
+		const { exportDB } = await import("dexie-export-import");
+
 		const blob = await exportDB(db);
 
 		handleDownload("trip-meister-export.json", blob);
