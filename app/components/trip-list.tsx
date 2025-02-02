@@ -1,5 +1,5 @@
 import { TripCard } from "@/components/trip-card";
-import { db } from "@/db.ts";
+import { db } from "@/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { PropsWithChildren } from "react";
 

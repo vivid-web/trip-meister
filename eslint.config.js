@@ -67,7 +67,7 @@ export default ts.config(
 		files: ["**/*.{ts,tsx,cts,mts}"],
 		languageOptions: {
 			parserOptions: {
-				project: ["./tsconfig.app.json", "./tsconfig.node.json"],
+				project: ["./tsconfig.json"],
 			},
 		},
 		extends: [
@@ -100,7 +100,14 @@ export default ts.config(
 		},
 	},
 	{
-		ignores: [".turbo", "node_modules", "dist", "src/routeTree.gen.ts"],
+		ignores: [
+			".idea",
+			".vercel",
+			".vinxi",
+			"node_modules",
+			"dist",
+			"app/routeTree.gen.ts",
+		],
 	},
 );
 /* eslint-enable perfectionist/sort-objects */
