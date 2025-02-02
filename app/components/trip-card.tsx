@@ -1,4 +1,4 @@
-import { distanceUnitsAtom } from "@/atoms.ts";
+import { distanceUnitsAtom } from "@/atoms";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {

@@ -23,5 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Vinxi
+.vinxi
+
+# Vercel
+.vercel
+
 # ESLint
 .eslintcache
