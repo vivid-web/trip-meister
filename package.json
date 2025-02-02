@@ -71,5 +71,10 @@
 	"engines": {
 		"node": ">=22.13.1"
 	},
-	"packageManager": "pnpm@10.2.0"
+	"packageManager": "pnpm@10.2.0",
+	"pnpm": {
+		"patchedDependencies": {
+			"dexie-react-hooks": "patches/dexie-react-hooks.patch"
+		}
+	}
 }

@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  dexie-react-hooks:
+    hash: 0e9b3ab5d2f69abbc96988f1dd1945779f49de0ed0dc7d3a81b691aaa00af4a5
+    path: patches/dexie-react-hooks.patch
+
 importers:
 
   .:
@@ -58,7 +63,7 @@ importers:
         version: 4.1.4(dexie@4.0.11)
       dexie-react-hooks:
         specifier: ^1.1.7
-        version: 1.1.7(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0)
+        version: 1.1.7(patch_hash=0e9b3ab5d2f69abbc96988f1dd1945779f49de0ed0dc7d3a81b691aaa00af4a5)(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0)
       jotai:
         specifier: ^2.11.3
         version: 2.11.3(@types/react@19.0.8)(react@19.0.0)
@@ -7019,7 +7024,7 @@ snapshots:
     dependencies:
       dexie: 4.0.11
 
-  dexie-react-hooks@1.1.7(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0):
+  dexie-react-hooks@1.1.7(patch_hash=0e9b3ab5d2f69abbc96988f1dd1945779f49de0ed0dc7d3a81b691aaa00af4a5)(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0):
     dependencies:
       '@types/react': 19.0.8
       dexie: 4.0.11
