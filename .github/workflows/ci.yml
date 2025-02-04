@@ -1,4 +1,4 @@
-name: CI Checks
+name: 🔎 CI checks
 
 on: push
 
@@ -7,38 +7,56 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
+  actions: write
   contents: read
 
 jobs:
-  ci:
-    name: CI
-    runs-on: ubuntu-latest
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: ⬇️ Checkout repo
         uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
-      - name: Setup pnpm
+
+      - name: ▫️ Setup pnpm
         uses: pnpm/action-setup@v4.0.0
-      - name: Setup Node
+
+      - name: ⎔ Setup node
         uses: actions/setup-node@v4.2.0
         with:
           node-version-file: .nvmrc
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      - name: Setup pnpm cache
-        uses: actions/cache@v4.2.0
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
+          cache: "pnpm"
+
+      - name: 📥 Install dependencies
         shell: bash
         run: pnpm install --frozen-lockfile
-      - name: Format code
-        run: pnpm format
-      - name: Lint code
-        run: pnpm lint
+
+      - name: 🔬 Lint
+        run: pnpm run lint
+
+  format:
+    name: 🎨 Prettier
+    runs-on: ubuntu-22.04
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: ▫️ Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4.2.0
+        with:
+          node-version-file: .nvmrc
+          cache: "pnpm"
+
+      - name: 📥 Install dependencies
+        shell: bash
+        run: pnpm install --frozen-lockfile
+
+      - name: 🎨 Format
+        run: pnpm run format
