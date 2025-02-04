@@ -12,7 +12,7 @@ env:
 jobs:
   review_app:
     name: 🚀 Review app
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     concurrency:
