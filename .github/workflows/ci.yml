@@ -13,7 +13,7 @@ permissions:
 jobs:
   lint:
     name: ⬣ ESLint
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4.2.2
@@ -38,7 +38,7 @@ jobs:
 
   format:
     name: 🎨 Prettier
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4.2.2
