@@ -1,4 +1,5 @@
 import { CarIcon } from "lucide-react";
+import { NewTripCard } from "@/components/new-trip-card";
 
 export function App() {
 	return (
@@ -11,6 +12,10 @@ export function App() {
 					<h1 className="text-3xl font-bold text-gray-900">TripMeister</h1>
 					<p className="mt-2 text-gray-600">Keep track of your trips</p>
 				</header>
+
+				<div className="grid gap-8 md:grid-cols-[350px,1fr]">
+					<NewTripCard />
+				</div>
 			</div>
 		</div>
 	);
