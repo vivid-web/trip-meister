@@ -4,6 +4,7 @@ import { Context, useContext } from "react";
 import { useForm, UseFormProps } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { DistanceUnit } from "@/constants.ts";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -39,3 +40,12 @@ export const formatDate = (date: Date) => {
 		minute: "2-digit",
 	});
 };
+
+export function formatDistance(distance: number, unit: DistanceUnit) {
+	switch (unit) {
+		case "km":
+			return `${distance.toFixed(1)} km`;
+		case "mi":
+			return `${distance.toLocaleString()} mi`;
+	}
+}
