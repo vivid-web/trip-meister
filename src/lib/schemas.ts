@@ -6,15 +6,15 @@ export const NameSchema = z
 	.max(255, "The trip name must be shorter than 255 characters");
 
 export const StartDateSchema = z.coerce.date({
+	invalid_type_error: "The start date must be a valid date",
 	message: "The start date must be a valid date",
 	required_error: "The start date is required",
-	invalid_type_error: "The start date must be a valid date",
 });
 
 export const EndDateSchema = z.coerce.date({
+	invalid_type_error: "The end date must be a valid date",
 	message: "The end date must be a valid date",
 	required_error: "The end date is required",
-	invalid_type_error: "The end date must be a valid date",
 });
 
 export const StartMileageSchema = z.coerce

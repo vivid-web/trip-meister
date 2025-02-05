@@ -1,12 +1,5 @@
-import {
-	CalendarIcon,
-	CheckCircleIcon,
-	Edit2Icon,
-	EllipsisVerticalIcon,
-	Trash2Icon,
-} from "lucide-react";
-import { formatDate, formatDistance } from "@/lib/utils";
-import { Trip } from "@/db";
+import { distanceUnitsAtom } from "@/atoms.ts";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	DropdownMenu,
@@ -15,9 +8,16 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { Trip } from "@/db";
+import { formatDate, formatDistance } from "@/lib/utils";
 import { useAtom } from "jotai";
-import { distanceUnitsAtom } from "@/atoms.ts";
+import {
+	CalendarIcon,
+	CheckCircleIcon,
+	Edit2Icon,
+	EllipsisVerticalIcon,
+	Trash2Icon,
+} from "lucide-react";
 import { lazily } from "react-lazily";
 
 const { EditTripDialog } = lazily(
@@ -33,7 +33,7 @@ const { DeleteTripDialog } = lazily(
 );
 
 export function TripCard(props: Trip) {
-	const { name, startDate, endDate, startMileage, endMileage } = props;
+	const { endDate, endMileage, name, startDate, startMileage } = props;
 
 	const [distanceUnits] = useAtom(distanceUnitsAtom);
 
@@ -96,11 +96,11 @@ export function TripCard(props: Trip) {
 				</div>
 				{(startMileage || endMileage) && (
 					<p className="text-sm text-gray-600">
-						Mileage: {formatDistance(startMileage, distanceUnits!)}
-						{endMileage && ` → ${formatDistance(endMileage, distanceUnits!)}`}
+						Mileage: {formatDistance(startMileage, distanceUnits)}
+						{endMileage && ` → ${formatDistance(endMileage, distanceUnits)}`}
 						{startMileage && endMileage && (
 							<span className="ml-2 text-primary">
-								({formatDistance(endMileage - startMileage, distanceUnits!)})
+								({formatDistance(endMileage - startMileage, distanceUnits)})
 							</span>
 						)}
 					</p>

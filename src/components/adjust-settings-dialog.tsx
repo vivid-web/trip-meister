@@ -1,4 +1,5 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { distanceUnitsAtom } from "@/atoms.ts";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -15,8 +16,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { useZodForm } from "@/lib/utils";
-import { z } from "zod";
+import { Input } from "@/components/ui/input.tsx";
 import {
 	Select,
 	SelectContent,
@@ -24,14 +24,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
 import { DISTANCE_UNITS, KILOMETERS, MILES } from "@/constants";
-import { toast } from "sonner";
-import { useAtom } from "jotai";
-import { distanceUnitsAtom } from "@/atoms.ts";
-import { Input } from "@/components/ui/input.tsx";
-import { importInto } from "dexie-export-import";
 import { db } from "@/db.ts";
+import { useZodForm } from "@/lib/utils";
+import { importInto } from "dexie-export-import";
+import { useAtom } from "jotai";
+import { PropsWithChildren, useEffect, useState } from "react";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const AdjustSettingsSchema = z.object({
 	distanceUnits: z.enum(DISTANCE_UNITS),
@@ -43,10 +43,10 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 	const [distanceUnits, setDistanceUnits] = useAtom(distanceUnitsAtom);
 
 	const form = useZodForm({
-		schema: AdjustSettingsSchema,
 		defaultValues: {
 			distanceUnits,
 		},
+		schema: AdjustSettingsSchema,
 	});
 
 	const fileRef = form.register("state");
@@ -54,6 +54,7 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 	const onSubmit = form.handleSubmit(async (data) => {
 		const [file] = data.state;
 
+		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 		if (file) {
 			await importInto(db, file, { overwriteValues: true });
 		}
@@ -69,7 +70,7 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 
 	useEffect(() => {
 		form.setValue("distanceUnits", distanceUnits);
-	}, [distanceUnits]);
+	}, [distanceUnits, form]);
 
 	return (
 		<Dialog onOpenChange={setIsOpen} open={isOpen}>
@@ -82,7 +83,12 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
-					<form className="grid gap-4" onSubmit={onSubmit}>
+					<form
+						className="grid gap-4"
+						onSubmit={(e) => {
+							void onSubmit(e);
+						}}
+					>
 						<FormField
 							control={form.control}
 							name="distanceUnits"
@@ -90,8 +96,8 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 								<FormItem className="grid grid-cols-4 items-center gap-4">
 									<FormLabel className="text-right">Distance unites</FormLabel>
 									<Select
-										onValueChange={field.onChange}
 										defaultValue={field.value}
+										onValueChange={field.onChange}
 									>
 										<FormControl className="col-span-3">
 											<SelectTrigger>
@@ -115,8 +121,8 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 										<FormLabel className="text-right">Import state</FormLabel>
 										<FormControl className="col-span-3">
 											<Input
-												type="file"
 												accept="application/json"
+												type="file"
 												{...fileRef}
 											/>
 										</FormControl>

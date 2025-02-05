@@ -1,10 +1,5 @@
-import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
-import { useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { z } from "zod";
-import { handleDownload, useZodForm } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
 	Form,
 	FormControl,
@@ -13,11 +8,16 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { db } from "@/db";
-import { toast } from "sonner";
-import { exportDB } from "dexie-export-import";
 import { NameSchema, StartMileageSchema } from "@/lib/schemas";
+import { handleDownload, useZodForm } from "@/lib/utils";
+import { exportDB } from "dexie-export-import";
+import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
+import { useEffect } from "react";
 import { lazily } from "react-lazily";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const { AdjustSettingsDialog } = lazily(
 	() => import("@/components/adjust-settings-dialog"),
@@ -25,13 +25,13 @@ const { AdjustSettingsDialog } = lazily(
 
 export function NewTripCard() {
 	const form = useZodForm({
+		defaultValues: {
+			name: "",
+		},
 		schema: z.object({
 			name: NameSchema,
 			startMileage: StartMileageSchema,
 		}),
-		defaultValues: {
-			name: "",
-		},
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
@@ -54,7 +54,7 @@ export function NewTripCard() {
 
 	useEffect(() => {
 		form.setFocus("name");
-	}, [form.setFocus]);
+	}, [form, form.setFocus]);
 
 	return (
 		<Card>
@@ -66,14 +66,24 @@ export function NewTripCard() {
 							<Settings2Icon className="h-4 w-4" />
 						</Button>
 					</AdjustSettingsDialog>
-					<Button size="icon" onClick={onDownload}>
+					<Button
+						onClick={() => {
+							void onDownload();
+						}}
+						size="icon"
+					>
 						<SaveIcon className="h-4 w-4" />
 					</Button>
 				</div>
 			</CardHeader>
 			<CardContent>
 				<Form {...form}>
-					<form className="flex flex-col gap-4" onSubmit={onSubmit}>
+					<form
+						className="flex flex-col gap-4"
+						onSubmit={(e) => {
+							void onSubmit(e);
+						}}
+					>
 						<FormField
 							control={form.control}
 							name="name"
@@ -103,7 +113,7 @@ export function NewTripCard() {
 											placeholder="Enter start mileage"
 											step="0.1"
 											type="number"
-											value={field.value ?? ""}
+											value={field.value || ""}
 										/>
 									</FormControl>
 									<FormMessage />

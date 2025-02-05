@@ -1,5 +1,3 @@
-import { PropsWithChildren } from "react";
-import { db, Trip } from "@/db.ts";
 import {
 	Dialog,
 	DialogClose,
@@ -10,8 +8,11 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
+import { db, Trip } from "@/db.ts";
+import { PropsWithChildren } from "react";
 import { toast } from "sonner";
+
+import { Button } from "./ui/button";
 
 type Props = PropsWithChildren<Trip>;
 
@@ -39,7 +40,13 @@ export function DeleteTripDialog({ children, id }: Props) {
 							Close
 						</Button>
 					</DialogClose>
-					<Button onMouseDown={onDelete}>Delete</Button>
+					<Button
+						onMouseDown={() => {
+							void onDelete();
+						}}
+					>
+						Delete
+					</Button>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>

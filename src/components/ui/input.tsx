@@ -29,4 +29,4 @@ function DateInput({
 	);
 }
 
-export { Input, DateInput };
+export { DateInput, Input };

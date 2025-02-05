@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -7,8 +7,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { RefinementCtx, z } from "zod";
-import { useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -18,9 +16,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { DateInput, Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { db, Trip } from "@/db";
-import { toast } from "sonner";
 import {
 	EndDateSchema,
 	EndMileageSchema,
@@ -28,13 +24,17 @@ import {
 	StartDateSchema,
 	StartMileageSchema,
 } from "@/lib/schemas";
+import { useZodForm } from "@/lib/utils";
+import { PropsWithChildren, useState } from "react";
+import { toast } from "sonner";
+import { RefinementCtx, z } from "zod";
 
 const EditTripSchema = z.object({
+	endDate: EndDateSchema,
+	endMileage: EndMileageSchema,
 	name: NameSchema,
 	startDate: StartDateSchema,
-	endDate: EndDateSchema,
 	startMileage: StartMileageSchema,
-	endMileage: EndMileageSchema,
 });
 
 const compareStartAndEndDate = (
@@ -83,27 +83,27 @@ const compareStartAndEndMileage = (
 
 export function EditTripDialog({
 	children,
-	name,
-	id,
-	startMileage,
-	startDate,
-	endMileage,
 	endDate,
+	endMileage,
+	id,
+	name,
+	startDate,
+	startMileage,
 }: PropsWithChildren<Trip>) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const form = useZodForm({
+		defaultValues: {
+			endDate,
+			endMileage,
+			name,
+			startDate,
+			startMileage,
+		},
 		schema: EditTripSchema
 			// prettier-ignore
 			.superRefine(compareStartAndEndDate)
 			.superRefine(compareStartAndEndMileage),
-		defaultValues: {
-			name,
-			startDate,
-			startMileage,
-			endDate,
-			endMileage,
-		},
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
@@ -125,7 +125,12 @@ export function EditTripDialog({
 					Make changes to your trip here. Click save when you're done.
 				</DialogDescription>
 				<Form {...form}>
-					<form className="flex flex-col gap-4" onSubmit={onSubmit}>
+					<form
+						className="flex flex-col gap-4"
+						onSubmit={(e) => {
+							void onSubmit(e);
+						}}
+					>
 						<FormField
 							control={form.control}
 							name="name"
@@ -151,10 +156,10 @@ export function EditTripDialog({
 									<FormLabel>Start Date and Time</FormLabel>
 									<FormControl>
 										<DateInput
-											selected={field.value}
-											onChange={field.onChange}
-											showTimeInput
 											dateFormat="MM/dd/yyyy h:mm aa"
+											onChange={field.onChange}
+											selected={field.value}
+											showTimeInput
 										/>
 									</FormControl>
 									<FormMessage />
@@ -173,7 +178,7 @@ export function EditTripDialog({
 											placeholder="Enter end mileage"
 											step="0.1"
 											type="number"
-											value={field.value ?? ""}
+											value={field.value || ""}
 										/>
 									</FormControl>
 									<FormMessage />
@@ -188,10 +193,10 @@ export function EditTripDialog({
 									<FormLabel>End Date and Time</FormLabel>
 									<FormControl>
 										<DateInput
-											selected={field.value}
-											onChange={field.onChange}
-											showTimeInput
 											dateFormat="MM/dd/yyyy h:mm aa"
+											onChange={field.onChange}
+											selected={field.value}
+											showTimeInput
 										/>
 									</FormControl>
 									<FormMessage />
@@ -210,7 +215,7 @@ export function EditTripDialog({
 											placeholder="Enter end mileage"
 											step="0.1"
 											type="number"
-											value={field.value ?? ""}
+											value={field.value || ""}
 										/>
 									</FormControl>
 									<FormMessage />
