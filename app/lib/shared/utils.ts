@@ -24,3 +24,5 @@ export function formatDistance(distance: number, unit: DistanceUnit) {
 			return `${distance.toLocaleString()} mi`;
 	}
 }
+
+export const isServer = typeof window === "undefined";
