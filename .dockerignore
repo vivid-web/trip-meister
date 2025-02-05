@@ -1,4 +1,7 @@
 /.git
+/.idea
+/.output
+/.vinxi
 /node_modules
 .dockerignore
 .env
