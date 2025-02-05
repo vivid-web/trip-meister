@@ -20,21 +20,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: ▫️ Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-
-      - name: ⎔ Setup node
-        uses: actions/setup-node@v4.2.0
+      - name: 🥟 Setup Bun
+        uses: oven-sh/setup-bun@v2.0.1
         with:
-          node-version-file: .nvmrc
-          cache: "pnpm"
+          bun-version-file: ".bun-version"
 
       - name: 📥 Install dependencies
         shell: bash
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: 🔬 Lint
-        run: pnpm run lint
+        run: bun run lint
 
   format:
     name: 🎨 Prettier
@@ -45,18 +41,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: ▫️ Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-
-      - name: ⎔ Setup node
-        uses: actions/setup-node@v4.2.0
+      - name: 🥟 Setup Bun
+        uses: oven-sh/setup-bun@v2.0.1
         with:
-          node-version-file: .nvmrc
-          cache: "pnpm"
+          bun-version-file: ".bun-version"
 
       - name: 📥 Install dependencies
         shell: bash
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: 🎨 Format
-        run: pnpm run format
+        run: bun run format

@@ -60,9 +60,5 @@
 		"vite": "^6.0.11",
 		"vite-tsconfig-paths": "^5.1.4",
 		"typescript-eslint": "^8.23.0"
-	},
-	"engines": {
-		"node": ">=22.13.1"
-	},
-	"packageManager": "pnpm@10.2.0"
+	}
 }
