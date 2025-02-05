@@ -93,10 +93,11 @@ export function NewTripCard() {
 									<FormLabel>Start Mileage</FormLabel>
 									<FormControl>
 										<Input
-											placeholder="Enter start mileage"
-											type="number"
-											step="0.1"
 											{...field}
+											placeholder="Enter start mileage"
+											step="0.1"
+											type="number"
+											value={field.value ?? ""}
 										/>
 									</FormControl>
 									<FormMessage />
