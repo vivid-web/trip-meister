@@ -12,9 +12,13 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 
-# Install pnpm
-ARG PNPM_VERSION=latest
-RUN npm install -g pnpm@$PNPM_VERSION
+# Set pnpm environment
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# Enable corepack
+RUN npm uninstall -g yarn pnpm && \
+    npm install -g corepack
 
 
 # Throw-away build stage to reduce size of final image
