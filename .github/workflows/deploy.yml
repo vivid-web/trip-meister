@@ -11,14 +11,14 @@ env:
 
 jobs:
   review_app:
-    name: 🎈 Fly review app
+    name: Fly.io
     runs-on: ubuntu-24.04
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     concurrency:
       group: pr-${{ github.event.number }}
     environment:
-      name: 🎈 Preview
+      name: Review app
       url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: ⬇️ Checkout repo
