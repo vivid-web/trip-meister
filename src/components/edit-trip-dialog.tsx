@@ -8,7 +8,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { RefinementCtx, z } from "zod";
-import { formatDate, formatDistance, useZodForm } from "@/lib/utils";
+import { useZodForm } from "@/lib/utils";
 import {
 	Form,
 	FormControl,
@@ -28,9 +28,6 @@ import {
 	StartDateSchema,
 	StartMileageSchema,
 } from "@/lib/schemas";
-import { DistanceUnit } from "@/constants";
-import { useAtom } from "jotai/index";
-import { distanceUnitsAtom } from "@/atoms";
 
 const EditTripSchema = z.object({
 	name: NameSchema,
@@ -44,30 +41,45 @@ const compareStartAndEndDate = (
 	input: z.input<typeof EditTripSchema>,
 	ctx: RefinementCtx,
 ) => {
-	if (input.endDate > input.startDate) return;
+	const currentDate = new Date();
 
-	const message = `The end date must be after ${formatDate(input.startDate)}`;
+	if (input.startDate > currentDate) {
+		ctx.addIssue({
+			code: z.ZodIssueCode.custom,
+			message: "The start date must be in the past",
+			path: ["startDate"],
+		});
+	}
+
+	if (input.endDate > currentDate) {
+		ctx.addIssue({
+			code: z.ZodIssueCode.custom,
+			message: "The end date must be in the past",
+			path: ["endDate"],
+		});
+	}
+
+	if (input.endDate <= input.startDate) {
+		ctx.addIssue({
+			code: z.ZodIssueCode.custom,
+			message: "The end date must be after the start date",
+			path: ["endDate"],
+		});
+	}
+};
+
+const compareStartAndEndMileage = (
+	input: z.input<typeof EditTripSchema>,
+	ctx: RefinementCtx,
+) => {
+	if (input.endMileage >= input.startMileage) return;
 
 	ctx.addIssue({
 		code: z.ZodIssueCode.custom,
-		message,
-		path: ["endDate"],
+		message: "The end mileage must be greater than the start mileage",
+		path: ["endMileage"],
 	});
 };
-
-const compareStartAndEndMileage =
-	(unit: DistanceUnit) =>
-	(input: z.input<typeof EditTripSchema>, ctx: RefinementCtx) => {
-		if (input.endMileage >= input.startMileage) return;
-
-		const message = `The end mileage must be greater than ${formatDistance(input.startMileage, unit)}`;
-
-		ctx.addIssue({
-			code: z.ZodIssueCode.custom,
-			message,
-			path: ["endMileage"],
-		});
-	};
 
 export function EditTripDialog({
 	children,
@@ -78,14 +90,13 @@ export function EditTripDialog({
 	endMileage,
 	endDate,
 }: PropsWithChildren<Trip>) {
-	const [distanceUnits] = useAtom(distanceUnitsAtom);
 	const [isOpen, setIsOpen] = useState(false);
 
 	const form = useZodForm({
 		schema: EditTripSchema
 			// prettier-ignore
 			.superRefine(compareStartAndEndDate)
-			.superRefine(compareStartAndEndMileage(distanceUnits)),
+			.superRefine(compareStartAndEndMileage),
 		defaultValues: {
 			name,
 			startDate,
