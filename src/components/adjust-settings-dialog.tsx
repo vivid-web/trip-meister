@@ -2,6 +2,7 @@ import { PropsWithChildren, useState } from "react";
 import {
 	Dialog,
 	DialogContent,
+	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
@@ -28,9 +29,13 @@ import { DISTANCE_UNITS, KILOMETERS, MILES } from "@/constants";
 import { toast } from "sonner";
 import { useAtom } from "jotai";
 import { distanceUnitsAtom } from "@/atoms.ts";
+import { Input } from "@/components/ui/input.tsx";
+import { importInto } from "dexie-export-import";
+import { db } from "@/db.ts";
 
 const AdjustSettingsSchema = z.object({
 	distanceUnits: z.enum(DISTANCE_UNITS),
+	state: z.instanceof(FileList),
 });
 
 export function AdjustSettingsDialog({ children }: PropsWithChildren) {
@@ -44,8 +49,18 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 		},
 	});
 
+	const fileRef = form.register("state");
+
 	const onSubmit = form.handleSubmit(async (data) => {
+		const [file] = data.state;
+
+		if (file) {
+			await importInto(db, file, { overwriteValues: true });
+		}
+
 		setDistanceUnits(data.distanceUnits);
+
+		form.reset();
 
 		setIsOpen(false);
 
@@ -58,20 +73,23 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>Adjust settings</DialogTitle>
+					<DialogDescription>
+						Change the settings that affect the application
+					</DialogDescription>
 				</DialogHeader>
 				<Form {...form}>
-					<form className="flex flex-col gap-4" onSubmit={onSubmit}>
+					<form className="grid gap-4" onSubmit={onSubmit}>
 						<FormField
 							control={form.control}
 							name="distanceUnits"
 							render={({ field }) => (
-								<FormItem className="flex flex-col">
-									<FormLabel>Distance unites</FormLabel>
+								<FormItem className="grid grid-cols-4 items-center gap-4">
+									<FormLabel className="text-right">Distance unites</FormLabel>
 									<Select
 										onValueChange={field.onChange}
 										defaultValue={field.value}
 									>
-										<FormControl>
+										<FormControl className="col-span-3">
 											<SelectTrigger>
 												<SelectValue placeholder="Select which units you want to display" />
 											</SelectTrigger>
@@ -82,6 +100,23 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 										</SelectContent>
 									</Select>
 									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							name="state"
+							render={() => (
+								<FormItem>
+									<div className="grid grid-cols-4 items-center gap-4">
+										<FormLabel className="text-right">Import state</FormLabel>
+										<FormControl className="col-span-3">
+											<Input
+												type="file"
+												accept="application/json"
+												{...fileRef}
+											/>
+										</FormControl>
+									</div>
 								</FormItem>
 							)}
 						/>
