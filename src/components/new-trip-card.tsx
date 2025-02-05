@@ -18,8 +18,13 @@ import { AdjustSettingsDialog } from "@/components/adjust-settings-dialog";
 import { exportDB } from "dexie-export-import";
 
 const NewTripSchema = z.object({
-	name: z.string().min(1),
-	startMileage: z.coerce.number().min(0),
+	name: z
+		.string({ message: "The trip name is required" })
+		.min(5, "The trip name must be longer than 5 character")
+		.max(255, "The trip name must be shorter than 255 characters"),
+	startMileage: z.coerce
+		.number({ message: "The start mileage is required" })
+		.min(0, "The start mileage must be greater than 0"),
 });
 
 export function NewTripCard() {
