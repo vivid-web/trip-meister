@@ -105,7 +105,7 @@ function FormDescription({ className, ...props }: ComponentProps<"p">) {
 
 	return (
 		<p
-			className={cn("text-sm text-muted-foreground", className)}
+			className={cn("text-muted-foreground text-sm", className)}
 			id={formDescriptionId}
 			{...props}
 		/>
@@ -122,7 +122,7 @@ function FormMessage({ children, className, ...props }: ComponentProps<"p">) {
 
 	return (
 		<p
-			className={cn("text-sm font-medium text-destructive", className)}
+			className={cn("text-destructive text-sm font-medium", className)}
 			id={formMessageId}
 			{...props}
 		>

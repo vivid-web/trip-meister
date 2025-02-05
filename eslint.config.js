@@ -100,7 +100,7 @@ export default ts.config(
 		},
 	},
 	{
-		ignores: [".turbo", "node_modules", "dist"],
+		ignores: [".turbo", "node_modules", "dist", "src/routeTree.gen.ts"],
 	},
 );
 /* eslint-enable perfectionist/sort-objects */
