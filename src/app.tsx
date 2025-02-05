@@ -1,5 +1,6 @@
 import { CarIcon } from "lucide-react";
 import { NewTripCard } from "@/components/new-trip-card";
+import { TripList } from "@/components/trip-list";
 
 export function App() {
 	return (
@@ -15,6 +16,7 @@ export function App() {
 
 				<div className="grid gap-8 md:grid-cols-[350px,1fr]">
 					<NewTripCard />
+					<TripList />
 				</div>
 			</div>
 		</div>
