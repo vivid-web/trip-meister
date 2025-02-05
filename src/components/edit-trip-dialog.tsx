@@ -7,7 +7,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { useTrip } from "@/contexts/trip-context";
 import { z } from "zod";
 import { useZodForm } from "@/lib/utils";
 import {
@@ -20,7 +19,7 @@ import {
 } from "@/components/ui/form";
 import { DateInput, Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Trip } from "@/db";
+import { db, Trip } from "@/db";
 
 const EditTripSchema = z.object({
 	startDate: z.coerce.date(),
@@ -41,8 +40,6 @@ export function EditTripDialog({
 	endMileage,
 	endDate,
 }: Props) {
-	const { editTrip } = useTrip();
-
 	const form = useZodForm({
 		schema: EditTripSchema,
 		defaultValues: {
@@ -55,7 +52,7 @@ export function EditTripDialog({
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await editTrip(id, data);
+		await db.trips.update(id, data);
 	});
 
 	return (

@@ -1,8 +1,13 @@
-import { useTrip } from "@/contexts/trip-context";
 import { TripCard } from "@/components/trip-card";
+import { useLiveQuery } from "dexie-react-hooks";
+import { db } from "@/db.ts";
 
 export function TripList() {
-	const { trips } = useTrip();
+	const trips = useLiveQuery(
+		() => db.trips.orderBy("startDate").reverse().toArray(),
+		[],
+		[],
+	);
 
 	return (
 		<div className="space-y-4">

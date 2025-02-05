@@ -17,8 +17,8 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { DateInput, Input } from "@/components/ui/input";
-import { useTrip } from "@/contexts/trip-context";
 import { Button } from "@/components/ui/button";
+import { db } from "@/db.ts";
 
 const FinishTripSchema = z.object({
 	endDate: z.coerce.date(),
@@ -28,8 +28,6 @@ const FinishTripSchema = z.object({
 type Props = PropsWithChildren<{ id: number }>;
 
 export function FinishTripDialog({ children, id }: Props) {
-	const { finishTrip } = useTrip();
-
 	const form = useZodForm({
 		schema: FinishTripSchema,
 		defaultValues: {
@@ -38,7 +36,7 @@ export function FinishTripDialog({ children, id }: Props) {
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await finishTrip(id, data);
+		await db.trips.update(id, data);
 	});
 
 	return (

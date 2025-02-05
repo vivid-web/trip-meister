@@ -1,5 +1,4 @@
 import { PlusCircle } from "lucide-react";
-import { useTrip } from "@/contexts/trip-context";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +12,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
+import { db } from "@/db.ts";
 
 const NewTripSchema = z.object({
 	name: z.string().min(1),
@@ -20,7 +20,6 @@ const NewTripSchema = z.object({
 });
 
 export function NewTripCard() {
-	const { startTrip } = useTrip();
 	const form = useZodForm({
 		schema: NewTripSchema,
 		defaultValues: {
@@ -29,7 +28,10 @@ export function NewTripCard() {
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await startTrip(data);
+		await db.trips.add({
+			...data,
+			startDate: new Date(),
+		});
 	});
 
 	return (
