@@ -27,7 +27,7 @@ import { useZodForm } from "@/hooks/use-zod-form";
 import { distanceUnitsAtom } from "@/lib/client/atoms";
 import { db } from "@/lib/client/db";
 import { DISTANCE_UNITS, KILOMETERS, MILES } from "@/lib/shared/constants";
-import { importInto } from "dexie-export-import";
+import { isServer } from "@/lib/shared/utils";
 import { useAtom } from "jotai";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -35,7 +35,7 @@ import { z } from "zod";
 
 const AdjustSettingsSchema = z.object({
 	distanceUnits: z.enum(DISTANCE_UNITS),
-	state: z.instanceof(FileList),
+	state: isServer ? z.never() : z.instanceof(FileList),
 });
 
 export function AdjustSettingsDialog({ children }: PropsWithChildren) {
@@ -52,6 +52,11 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 	const fileRef = form.register("state");
 
 	const onSubmit = form.handleSubmit(async (data) => {
+		// Because `dexie-export-import` can only be used in the browser,
+		// we need to import it dynamically to avoid breaking the
+		// server-side rendering
+		const { importInto } = await import("dexie-export-import");
+
 		const [file] = data.state;
 
 		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
