@@ -16,8 +16,10 @@ import {
 	CheckCircleIcon,
 	Edit2Icon,
 	EllipsisVerticalIcon,
+	Loader2Icon,
 	Trash2Icon,
 } from "lucide-react";
+import { Suspense } from "react";
 import { lazily } from "react-lazily";
 
 const { EditTripDialog } = lazily(
@@ -43,11 +45,19 @@ export function TripCard(props: Trip) {
 				<CardTitle className="flex flex-1">{name}</CardTitle>
 				<div className="flex flex-row gap-2">
 					{!endDate && (
-						<FinishTripDialog {...props}>
-							<Button size="icon">
-								<CheckCircleIcon className="h-4 w-4" />
-							</Button>
-						</FinishTripDialog>
+						<Suspense
+							fallback={
+								<Button disabled size="icon">
+									<Loader2Icon className="h-4 w-4 animate-spin" />
+								</Button>
+							}
+						>
+							<FinishTripDialog {...props}>
+								<Button size="icon">
+									<CheckCircleIcon className="h-4 w-4" />
+								</Button>
+							</FinishTripDialog>
+						</Suspense>
 					)}
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
@@ -58,26 +68,44 @@ export function TripCard(props: Trip) {
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
 							<DropdownMenuGroup>
-								<EditTripDialog {...props}>
-									<DropdownMenuItem
-										onSelect={(e) => {
-											e.preventDefault();
-										}}
-									>
-										<Edit2Icon className="h-4 w-4" />
-										<span>Edit</span>
-									</DropdownMenuItem>
-								</EditTripDialog>
-								<DeleteTripDialog {...props}>
-									<DropdownMenuItem
-										onSelect={(e) => {
-											e.preventDefault();
-										}}
-									>
-										<Trash2Icon className="h-4 w-4" />
-										<span>Delete</span>
-									</DropdownMenuItem>
-								</DeleteTripDialog>
+								<Suspense
+									fallback={
+										<DropdownMenuItem disabled>
+											<Loader2Icon className="h-4 w-4 animate-spin" />
+											<span>Edit</span>
+										</DropdownMenuItem>
+									}
+								>
+									<EditTripDialog {...props}>
+										<DropdownMenuItem
+											onSelect={(e) => {
+												e.preventDefault();
+											}}
+										>
+											<Edit2Icon className="h-4 w-4" />
+											<span>Edit</span>
+										</DropdownMenuItem>
+									</EditTripDialog>
+								</Suspense>
+								<Suspense
+									fallback={
+										<DropdownMenuItem disabled>
+											<Loader2Icon className="h-4 w-4 animate-spin" />
+											<span>Delete</span>
+										</DropdownMenuItem>
+									}
+								>
+									<DeleteTripDialog {...props}>
+										<DropdownMenuItem
+											onSelect={(e) => {
+												e.preventDefault();
+											}}
+										>
+											<Trash2Icon className="h-4 w-4" />
+											<span>Delete</span>
+										</DropdownMenuItem>
+									</DeleteTripDialog>
+								</Suspense>
 							</DropdownMenuGroup>
 						</DropdownMenuContent>
 					</DropdownMenu>
