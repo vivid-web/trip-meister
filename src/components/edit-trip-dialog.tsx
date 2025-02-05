@@ -64,10 +64,10 @@ export function EditTripDialog({
 			<DialogTrigger asChild>{children}</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
-					<DialogTitle>Edit profile</DialogTitle>
+					<DialogTitle>Edit trip</DialogTitle>
 				</DialogHeader>
 				<DialogDescription>
-					Make changes to your profile here. Click save when you're done.
+					Make changes to your trip here. Click save when you're done.
 				</DialogDescription>
 				<Form {...form}>
 					<form className="flex flex-col gap-4" onSubmit={onSubmit}>
