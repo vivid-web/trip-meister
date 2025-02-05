@@ -30,7 +30,7 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prod=false
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
 
 # Copy application code
 COPY . .
