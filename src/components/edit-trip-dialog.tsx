@@ -24,8 +24,6 @@ import { toast } from "sonner";
 import { useAtom } from "jotai/index";
 import { distanceUnitsAtom } from "@/atoms";
 
-type Props = PropsWithChildren<Trip>;
-
 const NameSchema = z
 	.string({ message: "The trip name is required" })
 	.min(5, "The trip name must be longer than 5 character")
@@ -59,7 +57,7 @@ export function EditTripDialog({
 	startDate,
 	endMileage,
 	endDate,
-}: Props) {
+}: PropsWithChildren<Trip>) {
 	const [distanceUnits] = useAtom(distanceUnitsAtom);
 	const [isOpen, setIsOpen] = useState(false);
 
