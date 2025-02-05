@@ -1,4 +1,4 @@
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Settings2Icon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/form";
 import { db } from "@/db.ts";
 import { toast } from "sonner";
+import { AdjustSettingsDialog } from "@/components/adjust-settings-dialog";
 
 const NewTripSchema = z.object({
 	name: z.string().min(1),
@@ -39,8 +40,13 @@ export function NewTripCard() {
 
 	return (
 		<Card>
-			<CardHeader>
-				<CardTitle>Start New Trip</CardTitle>
+			<CardHeader className="flex flex-row content-center items-center">
+				<CardTitle className="flex flex-1">Start New Trip</CardTitle>
+				<AdjustSettingsDialog>
+					<Button size="icon">
+						<Settings2Icon className="h-4 w-4" />
+					</Button>
+				</AdjustSettingsDialog>
 			</CardHeader>
 			<CardContent>
 				<Form {...form}>
