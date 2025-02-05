@@ -38,7 +38,7 @@ export function TripCard(props: Trip) {
 	const [distanceUnits] = useAtom(distanceUnitsAtom);
 
 	return (
-		<Card className="border-l-4 border-l-primary">
+		<Card className="border-l-primary border-l-4">
 			<CardHeader className="flex flex-row content-center items-center">
 				<CardTitle className="flex flex-1">{name}</CardTitle>
 				<div className="flex flex-row gap-2">
@@ -99,7 +99,7 @@ export function TripCard(props: Trip) {
 						Mileage: {formatDistance(startMileage, distanceUnits)}
 						{endMileage && ` → ${formatDistance(endMileage, distanceUnits)}`}
 						{startMileage && endMileage && (
-							<span className="ml-2 text-primary">
+							<span className="text-primary ml-2">
 								({formatDistance(endMileage - startMileage, distanceUnits)})
 							</span>
 						)}
