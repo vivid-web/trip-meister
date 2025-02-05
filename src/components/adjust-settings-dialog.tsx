@@ -1,4 +1,4 @@
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -66,6 +66,10 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 
 		toast.success("Settings have been saved");
 	});
+
+	useEffect(() => {
+		form.setValue("distanceUnits", distanceUnits);
+	}, [distanceUnits]);
 
 	return (
 		<Dialog onOpenChange={setIsOpen} open={isOpen}>
