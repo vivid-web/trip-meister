@@ -17,7 +17,17 @@ export function TripList() {
 		db.trips.orderBy("startDate").reverse().toArray(),
 	);
 
-	if (!trips?.length) {
+	if (!trips) {
+		return (
+			<Layout>
+				<p className="rounded border border-dashed border-gray-300 py-4 text-center text-gray-400">
+					Loading trips...
+				</p>
+			</Layout>
+		);
+	}
+
+	if (trips.length === 0) {
 		return (
 			<Layout>
 				<p className="rounded border border-dashed border-gray-300 py-4 text-center text-gray-400">
