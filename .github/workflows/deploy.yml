@@ -11,14 +11,14 @@ env:
 
 jobs:
   review_app:
-    name: 🚀 Review app
+    name: 🎈 Fly review app
     runs-on: ubuntu-24.04
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     concurrency:
       group: pr-${{ github.event.number }}
     environment:
-      name: review
+      name: 🎈 Preview
       url: ${{ steps.deploy.outputs.url }}
     steps:
       - name: ⬇️ Checkout repo
@@ -26,6 +26,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🚀 Deploy PR app to Fly.io
+      - name: 🚀 Deploy PR app to Fly
         id: deploy
         uses: superfly/fly-pr-review-apps@1.3.0
