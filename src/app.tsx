@@ -1,6 +1,7 @@
 import { CarIcon } from "lucide-react";
 import { NewTripCard } from "@/components/new-trip-card";
 import { TripList } from "@/components/trip-list";
+import { Toaster } from "@/components/ui/sonner";
 
 export function App() {
 	return (
@@ -19,6 +20,7 @@ export function App() {
 					<TripList />
 				</div>
 			</div>
+			<Toaster />
 		</div>
 	);
 }
