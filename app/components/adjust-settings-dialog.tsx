@@ -28,6 +28,7 @@ import { distanceUnitsAtom } from "@/lib/client/atoms";
 import { db } from "@/lib/client/db";
 import { DISTANCE_UNITS, KILOMETERS, MILES } from "@/lib/shared/constants";
 import { isServer } from "@/lib/shared/utils";
+import { useMutation } from "@tanstack/react-query";
 import { useAtom } from "jotai";
 import { PropsWithChildren, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -42,6 +43,30 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [distanceUnits, setDistanceUnits] = useAtom(distanceUnitsAtom);
 
+	const mutation = useMutation({
+		mutationFn: async (data: z.infer<typeof AdjustSettingsSchema>) => {
+			const [file] = data.state;
+
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+			if (file) {
+				// Because `dexie-export-import` can only be used in the browser,
+				// we need to import it dynamically to avoid breaking the
+				// server-side rendering
+				const { importInto } = await import("dexie-export-import");
+
+				await importInto(db, file, { overwriteValues: true });
+			}
+
+			setDistanceUnits(data.distanceUnits);
+
+			form.reset();
+
+			setIsOpen(false);
+
+			toast.success("Settings have been saved");
+		},
+	});
+
 	const form = useZodForm({
 		defaultValues: {
 			distanceUnits,
@@ -51,26 +76,8 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 
 	const fileRef = form.register("state");
 
-	const onSubmit = form.handleSubmit(async (data) => {
-		// Because `dexie-export-import` can only be used in the browser,
-		// we need to import it dynamically to avoid breaking the
-		// server-side rendering
-		const { importInto } = await import("dexie-export-import");
-
-		const [file] = data.state;
-
-		// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-		if (file) {
-			await importInto(db, file, { overwriteValues: true });
-		}
-
-		setDistanceUnits(data.distanceUnits);
-
-		form.reset();
-
-		setIsOpen(false);
-
-		toast.success("Settings have been saved");
+	const onSubmit = form.handleSubmit((data) => {
+		mutation.mutate(data);
 	});
 
 	useEffect(() => {
@@ -135,7 +142,12 @@ export function AdjustSettingsDialog({ children }: PropsWithChildren) {
 								</FormItem>
 							)}
 						/>
-						<Button type="submit">Save</Button>
+						<Button
+							disabled={mutation.isPending || !form.formState.isValid}
+							type="submit"
+						>
+							Save
+						</Button>
 					</form>
 				</Form>
 			</DialogContent>
