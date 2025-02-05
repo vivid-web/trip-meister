@@ -1,4 +1,5 @@
 import { PlusCircle, SaveIcon, Settings2Icon } from "lucide-react";
+import { useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -49,6 +50,10 @@ export function NewTripCard() {
 
 		handleDownload("trip-meister-export.json", blob);
 	};
+
+	useEffect(() => {
+		form.setFocus("name");
+	}, [form.setFocus]);
 
 	return (
 		<Card>
