@@ -1,4 +1,4 @@
-import { DistanceUnit } from "@/constants.ts";
+import { DistanceUnit } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { type ClassValue, clsx } from "clsx";
 import { Context, useContext } from "react";
