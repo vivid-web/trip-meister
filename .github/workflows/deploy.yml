@@ -8,6 +8,8 @@ on:
     types: [opened, reopened, synchronize, closed]
 
 env:
+  BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+  BETTER_AUTH_URL: ${{ secrets.BETTER_AUTH_URL }}
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
   FLY_REGION: ams
   FLY_ORG: vivid-web
