@@ -6,6 +6,10 @@
 app = 'trip-meister'
 primary_region = 'ams'
 
+[mounts]
+source = "data"
+destination = "/data"
+
 [build]
 
 [http_service]
