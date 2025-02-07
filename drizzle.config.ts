@@ -9,4 +9,5 @@ export default defineConfig({
 	},
 	dialect: "turso",
 	out: "./app/drizzle/migrations",
+	schema: "./app/drizzle/schema",
 });
