@@ -9,4 +9,5 @@ export default defineConfig({
 	},
 	dialect: "sqlite",
 	out: "./app/drizzle/migrations",
+	schema: "./app/drizzle/schema",
 });
