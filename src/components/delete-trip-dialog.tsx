@@ -8,7 +8,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { db, Trip } from "@/db.ts";
+import { db, Trip } from "@/db";
 import { PropsWithChildren } from "react";
 import { toast } from "sonner";
 
