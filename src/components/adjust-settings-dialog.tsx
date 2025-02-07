@@ -1,4 +1,4 @@
-import { distanceUnitsAtom } from "@/atoms.ts";
+import { distanceUnitsAtom } from "@/atoms";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -16,7 +16,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input.tsx";
+import { Input } from "@/components/ui/input";
 import {
 	Select,
 	SelectContent,
@@ -25,7 +25,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { DISTANCE_UNITS, KILOMETERS, MILES } from "@/constants";
-import { db } from "@/db.ts";
+import { db } from "@/db";
 import { useZodForm } from "@/lib/utils";
 import { importInto } from "dexie-export-import";
 import { useAtom } from "jotai";
