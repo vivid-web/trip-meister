@@ -14,6 +14,10 @@ export const env = createEnv({
 
 		// Database
 		DATABASE_PATH: z.string().min(1),
+
+		// GitHub
+		GITHUB_CLIENT_ID: z.string().min(1),
+		GITHUB_CLIENT_SECRET: z.string().min(1),
 	},
 	/* eslint-enable perfectionist/sort-objects */
 
