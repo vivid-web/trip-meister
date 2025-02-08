@@ -1,6 +1,9 @@
 name: 🚀 Deploy
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [opened, reopened, synchronize, closed]
 
@@ -11,8 +14,9 @@ env:
 
 jobs:
   review_app:
-    name: Fly.io
+    name: 🚀 Deploy review app
     runs-on: ubuntu-24.04
+    if: ${{ github.event_name == 'pull_request' }}
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     concurrency:
@@ -29,3 +33,23 @@ jobs:
       - name: 🚀 Deploy PR app to Fly
         id: deploy
         uses: superfly/fly-pr-review-apps@1.3.0
+
+  production:
+    name: 🚀 Deploy production
+    runs-on: ubuntu-24.04
+    if: ${{ github.event_name == 'push' }}
+    environment:
+      name: Production
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: 🎈 Setup Fly
+        uses: superfly/flyctl-actions/setup-flyctl@1.5
+
+      - name: 🚀 Deploy Production
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
