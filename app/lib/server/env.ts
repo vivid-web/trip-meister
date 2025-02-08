@@ -18,6 +18,10 @@ export const env = createEnv({
 		// GitHub
 		GITHUB_CLIENT_ID: z.string().min(1),
 		GITHUB_CLIENT_SECRET: z.string().min(1),
+
+		// Google
+		GOOGLE_CLIENT_ID: z.string().min(1),
+		GOOGLE_CLIENT_SECRET: z.string().min(1),
 	},
 	/* eslint-enable perfectionist/sort-objects */
 
