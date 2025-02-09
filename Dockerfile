@@ -4,7 +4,7 @@
 ARG BUN_VERSION=1.2.2
 FROM oven/bun:${BUN_VERSION} AS base
 
-LABEL fly_launch_runtime="Vite"
+LABEL fly_launch_runtime="Bun"
 
 WORKDIR /usr/src/app
 
