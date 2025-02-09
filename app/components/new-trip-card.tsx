@@ -13,7 +13,12 @@ import { Input } from "@/components/ui/input";
 import { useZodForm } from "@/hooks/use-zod-form";
 import { db } from "@/lib/client/db";
 import { NameSchema, StartMileageSchema } from "@/lib/shared/schemas";
-import { Loader2Icon, PlusCircle, Settings2Icon } from "lucide-react";
+import {
+	Loader2Icon,
+	LogInIcon,
+	PlusCircle,
+	Settings2Icon,
+} from "lucide-react";
 import { Suspense, useEffect } from "react";
 import { lazily } from "react-lazily";
 import { toast } from "sonner";
@@ -22,6 +27,8 @@ import { z } from "zod";
 const { AdjustSettingsDialog } = lazily(
 	() => import("@/components/adjust-settings-dialog"),
 );
+
+const { LoginDialog } = lazily(() => import("@/components/login-dialog"));
 
 export function NewTripCard() {
 	const form = useZodForm({
@@ -69,6 +76,19 @@ export function NewTripCard() {
 						</AdjustSettingsDialog>
 					</Suspense>
 					<DownloadStateButton />
+					<Suspense
+						fallback={
+							<Button disabled size="icon">
+								<Loader2Icon className="h-4 w-4 animate-spin" />
+							</Button>
+						}
+					>
+						<LoginDialog>
+							<Button size="icon">
+								<LogInIcon className="h-4 w-4" />
+							</Button>
+						</LoginDialog>
+					</Suspense>
 				</div>
 			</CardHeader>
 			<CardContent>
