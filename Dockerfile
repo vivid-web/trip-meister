@@ -6,7 +6,7 @@ FROM oven/bun:${BUN_VERSION} AS base
 
 LABEL fly_launch_runtime="Bun"
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 FROM base AS install
 
@@ -33,7 +33,7 @@ RUN bun run build
 
 FROM nginx AS release
 
-COPY --from=prerelease /usr/src/app/dist /usr/share/nginx/html
+COPY --from=prerelease /app/dist /usr/share/nginx/html
 
 EXPOSE 80
 CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
