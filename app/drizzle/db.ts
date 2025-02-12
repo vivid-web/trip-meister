@@ -1,12 +1,13 @@
 import { env } from "@/lib/server/env";
-import { Database } from "bun:sqlite";
-import { drizzle } from "drizzle-orm/bun-sqlite";
+import { drizzle } from "drizzle-orm/libsql";
 
 import * as schema from "./schema";
 
-const client = new Database(env.DATABASE_PATH);
-
-export const db = drizzle(client, {
+export const db = drizzle({
 	casing: "snake_case",
+	connection: {
+		authToken: env.TURSO_AUTH_TOKEN,
+		url: env.TURSO_DATABASE_URL,
+	},
 	schema,
 });

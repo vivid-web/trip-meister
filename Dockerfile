@@ -35,8 +35,6 @@ RUN bun run build
 
 FROM base AS release
 
-ENV DATABASE_PATH="/data/local.db"
-
 COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /app/bun.lock .
 COPY --from=prerelease /app/package.json .
@@ -45,9 +43,6 @@ COPY --from=prerelease /app/.vinxi .vinxi
 COPY --from=prerelease /app/.output .output
 COPY --from=prerelease /app/scripts scripts
 COPY --from=prerelease /app/app app
-
-RUN mkdir -p /data
-VOLUME /data
 
 USER bun
 EXPOSE 3000

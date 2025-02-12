@@ -1,13 +1,13 @@
 import { defineConfig } from "drizzle-kit";
 
-const DATABASE_PATH = process.env.DATABASE_PATH || "./data/local.db";
-
 export default defineConfig({
 	casing: "snake_case",
 	dbCredentials: {
-		url: DATABASE_PATH,
+		authToken: process.env.TURSO_AUTH_TOKEN || undefined,
+		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+		url: process.env.TURSO_DATABASE_URL!,
 	},
-	dialect: "sqlite",
+	dialect: "turso",
 	out: "./app/drizzle/migrations",
 	schema: "./app/drizzle/schema",
 });

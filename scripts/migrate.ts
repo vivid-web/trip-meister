@@ -1,11 +1,11 @@
 import { db } from "@/drizzle/db";
-import { migrate as baseMigrate } from "drizzle-orm/bun-sqlite/migrator";
+import { migrate as baseMigrate } from "drizzle-orm/libsql/migrator";
 
-function migrate() {
+async function migrate() {
 	console.log("🔄️ Migrating database...");
 
 	console.time("🗄️ Running DB migrations...");
-	baseMigrate(db, {
+	await baseMigrate(db, {
 		migrationsFolder: "./app/drizzle/migrations",
 	});
 	console.timeEnd("🗄️ Running DB migrations...");
@@ -14,7 +14,7 @@ function migrate() {
 }
 
 try {
-	migrate();
+	await migrate();
 } catch (e) {
 	console.error(e);
 	process.exit(1);

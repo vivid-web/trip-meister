@@ -25,3 +25,6 @@ destination = "/data"
   cpu_kind = 'shared'
   cpus = 1
   memory_mb = 256
+
+[deploy]
+release_command = "bun db:migrate"
