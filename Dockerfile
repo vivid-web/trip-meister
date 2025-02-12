@@ -4,9 +4,10 @@
 ARG BUN_VERSION=1.2.2
 FROM oven/bun:${BUN_VERSION} AS base
 
-LABEL fly_launch_runtime="Vite"
+LABEL fly_launch_runtime="Bun"
 
-WORKDIR /usr/src/app
+WORKDIR /app
+
 
 FROM base AS install
 
@@ -20,6 +21,7 @@ COPY package.json bun.lock /temp/prod/
 RUN cd /temp/prod && \
     bun install --frozen-lockfile --production
 
+
 FROM base AS prerelease
 
 COPY --from=install /temp/dev/node_modules node_modules
@@ -31,9 +33,17 @@ ENV NODE_ENV="production"
 RUN bun run build
 
 
-FROM nginx AS release
+FROM base AS release
 
-COPY --from=prerelease /usr/src/app/dist /usr/share/nginx/html
+COPY --from=install /temp/prod/node_modules node_modules
+COPY --from=prerelease /app/bun.lock .
+COPY --from=prerelease /app/package.json .
+COPY --from=prerelease /app/tsconfig.json .
+COPY --from=prerelease /app/.vinxi .vinxi
+COPY --from=prerelease /app/.output .output
+COPY --from=prerelease /app/scripts scripts
+COPY --from=prerelease /app/app app
 
-EXPOSE 80
-CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
+USER bun
+EXPOSE 3000
+CMD [ "bun", "run", "start" ]
