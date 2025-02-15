@@ -3,5 +3,6 @@
 	"configMigration": true,
 	"extends": ["config:recommended"],
 	"labels": ["Dependencies"],
-	"rangeStrategy": "bump"
+	"rangeStrategy": "bump",
+	"postUpdateOptions": ["pnpmDedupe"]
 }

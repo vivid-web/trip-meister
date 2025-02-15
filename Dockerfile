@@ -1,39 +1,53 @@
 # syntax = docker/dockerfile:1
 
-# Adjust BUN_VERSION as desired
-ARG BUN_VERSION=1.2.2
-FROM oven/bun:${BUN_VERSION} AS base
+# Adjust NODE_VERSION as desired
+ARG NODE_VERSION=22.14.0
+FROM node:${NODE_VERSION}-slim AS base
 
 LABEL fly_launch_runtime="Vite"
 
-WORKDIR /usr/src/app
+# Vite app lives here
+WORKDIR /app
 
-FROM base AS install
-
-RUN mkdir -p /temp/dev
-COPY package.json bun.lock /temp/dev/
-RUN cd /temp/dev && \
-    bun install --frozen-lockfile
-
-RUN mkdir -p /temp/prod
-COPY package.json bun.lock /temp/prod/
-RUN cd /temp/prod && \
-    bun install --frozen-lockfile --production
-
-FROM base AS prerelease
-
-COPY --from=install /temp/dev/node_modules node_modules
-
-COPY . .
-
+# Set production environment
 ENV NODE_ENV="production"
 
-RUN bun run build
+# Set pnpm environment
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
+# Enable corepack
+RUN npm uninstall -g yarn pnpm && \
+    npm install -g corepack
 
 
-FROM nginx AS release
+# Throw-away build stage to reduce size of final image
+FROM base AS build
 
-COPY --from=prerelease /usr/src/app/dist /usr/share/nginx/html
+# Install packages needed to build node modules
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3
 
+# Install node modules
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+
+# Copy application code
+COPY . .
+
+# Build application
+RUN pnpm run build
+
+# Remove development dependencies
+RUN pnpm prune --prod
+
+
+# Final stage for app image
+FROM nginx
+
+# Copy built application
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Start the server by default, this can be overwritten at runtime
 EXPOSE 80
 CMD [ "/usr/sbin/nginx", "-g", "daemon off;" ]
