@@ -92,7 +92,10 @@
 		"onlyBuiltDependencies": [
 			"@parcel/watcher",
 			"esbuild"
-		]
+		],
+		"patchedDependencies": {
+			"dexie-react-hooks": "patches/dexie-react-hooks.patch"
+		}
 	},
 	"packageManager": "pnpm@10.4.0"
 }

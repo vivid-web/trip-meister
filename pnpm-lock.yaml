@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  dexie-react-hooks:
+    hash: 3462bdb3245fef5407efababb6ae420b22a97c8613b7f3bc05636900c6e4218f
+    path: patches/dexie-react-hooks.patch
+
 importers:
 
   .:
@@ -67,7 +72,7 @@ importers:
         version: 4.1.4(dexie@4.0.11)
       dexie-react-hooks:
         specifier: ^1.1.7
-        version: 1.1.7(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0)
+        version: 1.1.7(patch_hash=3462bdb3245fef5407efababb6ae420b22a97c8613b7f3bc05636900c6e4218f)(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0)
       drizzle-orm:
         specifier: ^0.39.3
         version: 0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)
@@ -8016,7 +8021,7 @@ snapshots:
     dependencies:
       dexie: 4.0.11
 
-  dexie-react-hooks@1.1.7(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0):
+  dexie-react-hooks@1.1.7(patch_hash=3462bdb3245fef5407efababb6ae420b22a97c8613b7f3bc05636900c6e4218f)(@types/react@19.0.8)(dexie@4.0.11)(react@19.0.0):
     dependencies:
       '@types/react': 19.0.8
       dexie: 4.0.11

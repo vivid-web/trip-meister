@@ -1,4 +1,7 @@
-import { Dexie, EntityTable } from "dexie";
+import pkg, { type Dexie as DexieType, type EntityTable } from "dexie";
+
+// @ts-expect-error Dexie isn't exported correctly
+const { Dexie } = pkg;
 
 export type Trip = {
 	endDate?: Date;
@@ -9,7 +12,8 @@ export type Trip = {
 	startMileage: number;
 };
 
-export const db = new Dexie("TripMeister") as Dexie & {
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+export const db = new Dexie("TripMeister") as DexieType & {
 	trips: EntityTable<Trip, "id">;
 };
 
