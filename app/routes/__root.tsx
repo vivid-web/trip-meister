@@ -6,9 +6,13 @@ import { env } from "@/lib/client/env";
 import appCss from "@/styles/app.css?url";
 import { type QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
+import {
+	createRootRouteWithContext,
+	HeadContent,
+	Outlet,
+	Scripts,
+} from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { Meta, Scripts } from "@tanstack/start";
 import { PropsWithChildren } from "react";
 
 export const Route = createRootRouteWithContext<{
@@ -54,7 +58,7 @@ function RootDocument({ children }: PropsWithChildren) {
 	return (
 		<html>
 			<head>
-				<Meta />
+				<HeadContent />
 			</head>
 			<body>
 				{children}
