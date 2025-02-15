@@ -1,0 +1,13 @@
+diff --git a/dist/dexie-react-hooks.mjs b/dist/dexie-react-hooks.mjs
+index 7b201dd378e790a3e8de5b4c9d7f2f4b0e5166ff..28555e6954fd82c0024915b7e520d3e109ab6535 100644
+--- a/dist/dexie-react-hooks.mjs
++++ b/dist/dexie-react-hooks.mjs
+@@ -1,5 +1,7 @@
+-import { liveQuery, Dexie } from 'dexie';
+ import React from 'react';
++import pkg from 'dexie';
++
++const { liveQuery, Dexie } = pkg;
+ 
+ function useObservable(observableFactory, arg2, arg3) {
+     // Resolve vars from overloading variants of this function:
