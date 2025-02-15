@@ -1,9 +1,11 @@
 import { DefaultCatchBoundary } from "@/components/default-catch-boundary";
 import { NotFound } from "@/components/not-found";
+import { Show } from "@/components/show";
+import "react-datepicker/dist/react-datepicker.css";
+import { env } from "@/lib/client/env";
 import appCss from "@/styles/app.css?url";
 import { type QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import "react-datepicker/dist/react-datepicker.css";
 import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { Meta, Scripts } from "@tanstack/start";
@@ -40,8 +42,10 @@ function RootComponent() {
 	return (
 		<RootDocument>
 			<Outlet />
-			<TanStackRouterDevtools position="bottom-right" />
-			<ReactQueryDevtools buttonPosition="bottom-left" />
+			<Show when={env.DEV}>
+				<TanStackRouterDevtools position="bottom-right" />
+				<ReactQueryDevtools buttonPosition="bottom-left" />
+			</Show>
 		</RootDocument>
 	);
 }
