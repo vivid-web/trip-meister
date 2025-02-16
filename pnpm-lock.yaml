@@ -53,8 +53,8 @@ importers:
         specifier: ^1.105.0
         version: 1.105.0(@tanstack/react-router@1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(csstype@3.1.3)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/start':
-        specifier: ^1.105.2
-        version: 1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)
+        specifier: ^1.105.3
+        version: 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)
       better-auth:
         specifier: ^1.1.18
         version: 1.1.18
@@ -2080,22 +2080,22 @@ packages:
     resolution: {integrity: sha512-OHUsAxjTzpkdDXRVtCN66peo0zx2xL4IqP3CheRJ+2oZGWCupfvHPKUITsvU7gqt77Xjy2uDwpVtJ9Vppp2QwQ==}
     engines: {node: '>=12'}
 
-  '@tanstack/start-api-routes@1.105.0':
-    resolution: {integrity: sha512-10Bc+Ix+ZA05I2Ba77jBuqmH1I9H6lgSD7D4RK4O3YqcnYgt1I5LWt/3BKJjL7xp9bmMVDs1YHXO62e30dXhJw==}
+  '@tanstack/start-api-routes@1.105.3':
+    resolution: {integrity: sha512-r8AZE8usUKbQ07KNFOXe2t3Tu1Tsc6I+ffL7Ikl4fG3hWzwF8YnBHA1u7KcZInY2lIOlcWspvU7UHdk5PG173w==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-client@1.105.0':
-    resolution: {integrity: sha512-oP9f8zfLIYdPgNoaCnO2eFunYD7yXz2eCKwFY0oDhWLSEYaUf/5Ur2ukGH4keKOuBfyTgmxIjrFqQFMrUbyMvA==}
+  '@tanstack/start-client@1.105.3':
+    resolution: {integrity: sha512-nf/Dy2zjaezwVjcqNd8VD7V5InMUhQriRdDJlRT/wWQTsKkreOZ1gPLwUskK1i/BCk0+PjG4OD6S2ONEW9RqCA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-config@1.105.2':
-    resolution: {integrity: sha512-Mo/hhkkPpoEGDzudVeo8PonuPM01cDFnYPqCrtiNI+tMVTiB9D2JMYkTxoePIkOWRTXscb+8EwHXLOYXVWwADA==}
+  '@tanstack/start-config@1.105.3':
+    resolution: {integrity: sha512-WAyoEG03SWWbfjgODRFcgrF/tuHyfsDOK5SXcyeEn0nTML2ap6zGj2IO059tdzDOzbJpxkofAJDirp6T7+E7LA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
@@ -2113,22 +2113,22 @@ packages:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-server-functions-client@1.105.2':
-    resolution: {integrity: sha512-6eV7U9gwdx7035b2HsVexZGRT3yWj0rnCOpy8ninnqA05gr+AfHLS6rAZdZrJw6fpHU+27PtTP+fFsq5U+vvkQ==}
+  '@tanstack/start-server-functions-client@1.105.3':
+    resolution: {integrity: sha512-sC8WwuV7tN1sGajOb6MuRtypJzVOKH91uQTOkDiPveUbi7j5+kg8mPmjGie1a1GgLGC7b0y7G2plYU84yZ/yJA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-server-functions-fetcher@1.105.0':
-    resolution: {integrity: sha512-ZXqot6kRtgJOJeE3Qic/Lqsk5Ot+u+w09cHWw8HPIqqApZF7CJ1TyD4tpcZ0t7dDSTyFSxJD6JPtHHJi58Cvtw==}
+  '@tanstack/start-server-functions-fetcher@1.105.3':
+    resolution: {integrity: sha512-X2brRhoTP2mecZbHH2E8fnkGLI4Vnmwb6+4AXfkkpmmN46PMeC+4Re1dm26fYh2G5CHqUKssRT5peEXXuU+5iw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-server-functions-handler@1.105.0':
-    resolution: {integrity: sha512-lA+/3t7msEzS6W1ARYXbD65nQN6ge5QdWbLfabA4I/DCv3YSgZOlIke7wcCuUo86vIXABGk3fRF8GSUb1r9CNw==}
+  '@tanstack/start-server-functions-handler@1.105.3':
+    resolution: {integrity: sha512-Xh1Wy9FG975JMVFr12g/HQwJBMdR75ZS/1/cz80XUqDAURyFWSnXTKGV6ptlh9I328hfjxLYbXMgspSQ7Gs7hA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
@@ -2141,22 +2141,22 @@ packages:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-server-functions-ssr@1.105.2':
-    resolution: {integrity: sha512-HGGziiJgBW7bRBYImT0KT3k9qAsTGLas/NUyawYBVmcZN6Y2kGNYDcjACP70ztnXr0SM2nOsLWCSopQFCZ/TqA==}
+  '@tanstack/start-server-functions-ssr@1.105.3':
+    resolution: {integrity: sha512-Gy8y3gOS+8mCDuvyUtXhhLgGYRQGkwmt7m6TIX1H4j4GEDfbmeywnK9CY31Z7XE5omalsPeFChnx6RVjiTrPig==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start-server@1.105.0':
-    resolution: {integrity: sha512-rkeQbaqP5a08gt7NSHKffkvzm+XRW5lxvq586gbrcpe77D7njKqt2HPmX4tisEe1Ksh5W+VN/V1vbvvTgJycYA==}
+  '@tanstack/start-server@1.105.3':
+    resolution: {integrity: sha512-f/DSri5ws/S+T4gtSc2U4BRn4tQBLJwMqTYsSo65waPVKsRIFaGFHAu4jULn5MXlG8E7XMoqHxF2nef1CY0X8A==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
       react-dom: '>=18.0.0 || >=19.0.0'
 
-  '@tanstack/start@1.105.2':
-    resolution: {integrity: sha512-WJaPYEYgye5GeYvpDC2I+IHI+eBa6nBlvyhofv0yPKJolt09zD0DzYfo9zHJLxdSqZD8lRylHjkfKu9Op1mnXg==}
+  '@tanstack/start@1.105.3':
+    resolution: {integrity: sha512-i2ffVh9cqTr0wHXw3V7d8IhG4etIkVfLq+lTUlREpj4B4j0qOQJxSB9Ey3TnQaqZ0lwiLR1bwI3UodCMGlvMJw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=18.0.0 || >=19.0.0'
@@ -6685,10 +6685,10 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@tanstack/start-api-routes@1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-api-routes@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/start-server': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       vinxi: 0.5.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
@@ -6735,7 +6735,7 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-client@1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-client@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-cross-context': 1.99.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -6787,14 +6787,14 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-config@1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)':
+  '@tanstack/start-config@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/router-generator': 1.105.0(@tanstack/react-router@1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       '@tanstack/router-plugin': 1.105.0(@tanstack/react-router@1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))
       '@tanstack/server-functions-plugin': 1.105.2
       '@tanstack/start-plugin': 1.102.6
-      '@tanstack/start-server-functions-handler': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-handler': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       '@vitejs/plugin-react': 4.3.4(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))
       import-meta-resolve: 4.1.0
       nitropack: 2.10.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(typescript@5.7.3)
@@ -6918,10 +6918,10 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-server-functions-client@1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-server-functions-client@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/server-functions-plugin': 1.105.2
-      '@tanstack/start-server-functions-fetcher': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-fetcher': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     transitivePeerDependencies:
@@ -6968,10 +6968,10 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-server-functions-fetcher@1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-server-functions-fetcher@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/start-client': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     transitivePeerDependencies:
@@ -7017,11 +7017,11 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-server-functions-handler@1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-server-functions-handler@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/start-client': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       tiny-invariant: 1.3.3
@@ -7078,12 +7078,12 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@tanstack/start-server-functions-ssr@1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-server-functions-ssr@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/server-functions-plugin': 1.105.2
-      '@tanstack/start-client': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server-functions-fetcher': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-fetcher': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       tiny-invariant: 1.3.3
@@ -7131,11 +7131,11 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start-server@1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
+  '@tanstack/start-server@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)':
     dependencies:
       '@tanstack/react-cross-context': 1.99.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/react-router': 1.105.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/start-client': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       h3: 1.13.0
       isbot: 5.1.22
       jsesc: 3.1.0
@@ -7185,17 +7185,17 @@ snapshots:
       - xml2js
       - yaml
 
-  '@tanstack/start@1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)':
+  '@tanstack/start@1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)':
     dependencies:
-      '@tanstack/start-api-routes': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-client': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-config': 1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)
+      '@tanstack/start-api-routes': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-config': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)
       '@tanstack/start-router-manifest': 1.105.1(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server-functions-client': 1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
-      '@tanstack/start-server-functions-handler': 1.105.0(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-client': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-handler': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       '@tanstack/start-server-functions-server': 1.105.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tanstack/start-server-functions-ssr': 1.105.2(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      '@tanstack/start-server-functions-ssr': 1.105.3(@libsql/client@0.14.0)(@types/node@22.13.4)(db0@0.2.4(@libsql/client@0.14.0)(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5)))(drizzle-orm@0.39.3(@libsql/client@0.14.0)(bun-types@1.2.2)(kysely@0.27.5))(ioredis@5.5.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.39.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       vite: 6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(tsx@4.19.2)(yaml@2.7.0)
