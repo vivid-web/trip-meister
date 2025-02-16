@@ -25,6 +25,10 @@ RUN npm uninstall -g yarn pnpm && \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+RUN apt-get update -qq && \
+    apt-get install -y ca-certificates && \
+    update-ca-certificates
+
 # Install node modules
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches
@@ -44,7 +48,9 @@ RUN pnpm prune --prod
 FROM base AS release
 
 # Copy built application
+RUN mkdir -p /app/data
 COPY --from=build /app/.output ./
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000

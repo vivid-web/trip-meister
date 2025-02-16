@@ -6,6 +6,10 @@
 app = 'trip-meister'
 primary_region = 'ams'
 
+[[mounts]]
+source = "libsql_data"
+destination = "/app/data"
+
 [build]
 
 [http_service]

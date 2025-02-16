@@ -1,11 +1,26 @@
 import { NewTripCard } from "@/components/new-trip-card";
 import { TripList } from "@/components/trip-list";
 import { Toaster } from "@/components/ui/sonner";
+import { db } from "@/drizzle/db";
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/start";
 import { CarIcon } from "lucide-react";
+
+const getFoo = createServerFn().handler(async () => {
+	const users = await db.query.user.findMany();
+
+	console.log(users);
+
+	return users;
+});
 
 export const Route = createFileRoute("/")({
 	component: RouteComponent,
+	loader: async () => {
+		const users = await getFoo();
+
+		return { users };
+	},
 });
 
 function RouteComponent() {
