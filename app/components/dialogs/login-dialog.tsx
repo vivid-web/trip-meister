@@ -1,5 +1,6 @@
 import { GithubIcon } from "@/components/icons/github-icon";
 import { GoogleIcon } from "@/components/icons/google-icon";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
@@ -11,8 +12,6 @@ import {
 import { signIn } from "@/lib/shared/auth";
 import { useMutation } from "@tanstack/react-query";
 import { PropsWithChildren } from "react";
-
-import { Button } from "./ui/button";
 
 type Props = PropsWithChildren;
 

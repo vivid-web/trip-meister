@@ -1,4 +1,4 @@
-import { LoginDialog } from "@/components/login-dialog";
+import { LoginDialog } from "@/components/dialogs/login-dialog";
 import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
@@ -14,19 +14,11 @@ import { useMutation } from "@tanstack/react-query";
 import { Loader2Icon, User2Icon } from "lucide-react";
 import { ComponentProps } from "react";
 
-type AccountSectionProps = ComponentProps<"div">;
-
-type LayoutProps = ComponentProps<"div">;
-
-function Layout({ children, className, ...props }: LayoutProps) {
-	return (
-		<div className={cn("flex justify-end", className)} {...props}>
-			{children}
-		</div>
-	);
+function Layout({ className, ...props }: ComponentProps<"div">) {
+	return <div className={cn("flex justify-end", className)} {...props} />;
 }
 
-export function AccountSection({ ...props }: AccountSectionProps) {
+export function AccountSection({ ...props }: ComponentProps<typeof Layout>) {
 	const session = useSession();
 
 	const logoutMutation = useMutation({

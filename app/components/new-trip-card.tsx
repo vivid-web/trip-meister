@@ -12,7 +12,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { useZodForm } from "@/hooks/use-zod-form";
 import { db } from "@/lib/client/db";
-import { NameSchema, StartMileageSchema } from "@/lib/shared/schemas";
+import { createTripAction } from "@/lib/server/actions";
+import { CreateTripSchema } from "@/lib/shared/schemas";
+import { useMutation } from "@tanstack/react-query";
 import { Loader2Icon, PlusCircle, Settings2Icon } from "lucide-react";
 import { Suspense, useEffect } from "react";
 import { lazily } from "react-lazily";
@@ -24,21 +26,22 @@ const { AdjustSettingsDialog } = lazily(
 );
 
 export function NewTripCard() {
+	const mutation = useMutation({
+		mutationFn: async (data: z.infer<typeof CreateTripSchema>) => {
+			await createTripAction({ data });
+		},
+	});
+
 	const form = useZodForm({
 		defaultValues: {
 			name: "",
 		},
-		schema: z.object({
-			name: NameSchema,
-			startMileage: StartMileageSchema,
-		}),
+		schema: CreateTripSchema,
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await db.trips.add({
-			...data,
-			startDate: new Date(),
-		});
+		await db.trips.add(data);
+		mutation.mutate(data);
 
 		form.setFocus("name");
 		form.reset();

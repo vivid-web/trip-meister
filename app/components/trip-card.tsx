@@ -23,15 +23,15 @@ import { Suspense } from "react";
 import { lazily } from "react-lazily";
 
 const { EditTripDialog } = lazily(
-	() => import("@/components/edit-trip-dialog"),
+	() => import("@/components/dialogs/edit-trip-dialog"),
 );
 
 const { FinishTripDialog } = lazily(
-	() => import("@/components/finish-trip-dialog"),
+	() => import("@/components/dialogs/finish-trip-dialog"),
 );
 
 const { DeleteTripDialog } = lazily(
-	() => import("@/components/delete-trip-dialog"),
+	() => import("@/components/dialogs/delete-trip-dialog"),
 );
 
 export function TripCard(props: Trip) {

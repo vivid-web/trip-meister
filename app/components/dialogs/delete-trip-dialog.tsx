@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogClose,
@@ -11,8 +12,6 @@ import {
 import { db, Trip } from "@/lib/client/db";
 import { PropsWithChildren } from "react";
 import { toast } from "sonner";
-
-import { Button } from "./ui/button";
 
 type Props = PropsWithChildren<Trip>;
 

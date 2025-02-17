@@ -24,3 +24,9 @@ export const StartMileageSchema = z.coerce
 export const EndMileageSchema = z.coerce
 	.number({ message: "The end mileage is required" })
 	.min(0, "The end mileage must be greater than 0");
+
+export const CreateTripSchema = z.object({
+	name: NameSchema,
+	startDate: StartDateSchema.default(() => new Date()),
+	startMileage: StartMileageSchema,
+});

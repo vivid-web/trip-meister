@@ -13,9 +13,9 @@ function Layout({ children }: PropsWithChildren) {
 }
 
 export function TripList() {
-	const trips = useLiveQuery(() =>
-		db.trips.orderBy("startDate").reverse().toArray(),
-	);
+	const trips = useLiveQuery(() => {
+		return db.trips.where("$deleted").notEqual(1).toArray();
+	});
 
 	if (!trips) {
 		return (

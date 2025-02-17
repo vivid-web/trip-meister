@@ -13,7 +13,7 @@ export function useZodForm<TSchema extends z.ZodType>({
 	schema,
 	...params
 }: UseZodFormParams<TSchema>) {
-	return useForm<TSchema["_input"]>({
+	return useForm<TSchema["_output"]>({
 		...params,
 		resolver: zodResolver(schema),
 	});
