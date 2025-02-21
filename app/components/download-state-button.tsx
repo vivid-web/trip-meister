@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { db } from "@/lib/client/db";
 import { handleDownload } from "@/lib/client/utils";
 import { useMutation } from "@tanstack/react-query";
 import { Loader2Icon, SaveIcon } from "lucide-react";
@@ -10,7 +9,10 @@ export function DownloadStateButton() {
 			// Because `dexie-export-import` can only be used in the browser,
 			// we need to import it dynamically to avoid breaking the
 			// server-side rendering
-			const { exportDB } = await import("dexie-export-import");
+			const [exportDB, db] = await Promise.all([
+				await import("dexie-export-import").then((mod) => mod.exportDB),
+				await import("@/lib/client/db").then((mod) => mod.db),
+			]);
 
 			const blob = await exportDB(db);
 

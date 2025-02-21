@@ -1,5 +1,4 @@
 import { TripCard } from "@/components/trip-card";
-import { db } from "@/lib/client/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { PropsWithChildren } from "react";
 
@@ -13,7 +12,9 @@ function Layout({ children }: PropsWithChildren) {
 }
 
 export function TripList() {
-	const trips = useLiveQuery(() => {
+	const trips = useLiveQuery(async () => {
+		const db = await import("@/lib/client/db").then((mod) => mod.db);
+
 		return db.trips.where("$deleted").notEqual(1).toArray();
 	});
 
