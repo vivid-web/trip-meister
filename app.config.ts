@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "@tanstack/start/config";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -18,10 +19,18 @@ export default defineConfig({
 		preset: "node-server",
 	},
 	vite: {
+		build: {
+			sourcemap: true,
+		},
 		plugins: [
 			tailwindcss(),
 			tsconfigPaths({
 				projects: ["./tsconfig.json"],
+			}),
+			sentryVitePlugin({
+				authToken: process.env.SENTRY_AUTH_TOKEN,
+				org: "vivid-web",
+				project: "trip-meister",
 			}),
 		],
 	},
