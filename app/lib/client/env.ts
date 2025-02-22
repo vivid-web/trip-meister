@@ -2,7 +2,9 @@ import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
 
 export const env = createEnv({
-	client: {},
+	client: {
+		VITE_APP_ENV: z.string().optional().default("production"),
+	},
 
 	clientPrefix: "VITE_",
 

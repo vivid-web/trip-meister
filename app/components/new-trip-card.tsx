@@ -69,6 +69,13 @@ export function NewTripCard() {
 						</AdjustSettingsDialog>
 					</Suspense>
 					<DownloadStateButton />
+					<Button
+						onClick={() => {
+							throw new Error("This is your first error!");
+						}}
+					>
+						Break the world
+					</Button>
 				</div>
 			</CardHeader>
 			<CardContent>

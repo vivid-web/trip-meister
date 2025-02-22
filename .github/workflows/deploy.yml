@@ -17,8 +17,10 @@ env:
   GITHUB_CLIENT_SECRET: ${{ secrets._GITHUB_CLIENT_SECRET }}
   GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
   GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
   TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
   TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+  VITE_APP_ENV: ${{ vars.VITE_APP_ENV }}
 
 jobs:
   review_app:
@@ -64,6 +66,7 @@ jobs:
         uses: superfly/fly-pr-review-apps@1.3.0
         with:
           secrets: >-
+            VITE_APP_ENV=${{ vars.VITE_APP_ENV }}
             TURSO_DATABASE_URL=libsql://${{ steps.create_database.outputs.hostname }}
             TURSO_AUTH_TOKEN=${{ steps.create_database.outputs.token }}
 
@@ -102,7 +105,10 @@ jobs:
         uses: superfly/flyctl-actions/setup-flyctl@1.5
 
       - name: 🚀 Deploy Production
-        run: flyctl deploy --remote-only
+        run: >-
+          flyctl deploy \
+            --remote-only \
+            --build-secret SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 
-      - name: 🏗 Migrate database
+      - name: 🔄 Migrate database
         run: pnpm db:migrate
