@@ -1,14 +1,20 @@
 import { NewTripCard } from "@/components/new-trip-card";
 import { TripList } from "@/components/trip-list";
 import { Toaster } from "@/components/ui/sonner";
+import { env } from "@/lib/client/env";
 import { createFileRoute } from "@tanstack/react-router";
 import { CarIcon } from "lucide-react";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
+	useEffect(() => {
+		console.log(env.VITE_APP_ENV);
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-gray-100">
 			<div className="mx-auto max-w-4xl px-4 py-8">
